@@ -14,15 +14,15 @@ function DataViz_ContentCard($$payload, $$props) {
   let hoveredImageIndex = 0;
   const each_array = ensure_array_like(data.content.tags);
   const each_array_1 = ensure_array_like(data.content.images);
-  $$payload.out += `<div class="img-preview-content"><div class="content-title svelte-1ydpajj">${escape_html(data.content.title)}</div> <div class="main-content-flex svelte-1ydpajj"><div class="image-container-flex-child svelte-1ydpajj"${attr("style", `background-image: url('${stringify(data.content.images[hoveredImageIndex])}')`)}></div> <div class="content-description-flex-child svelte-1ydpajj"><div class="flex flex-wrap gap-2.5"><!--[-->`;
+  $$payload.out += `<div class="img-preview-content"><div class="content-title svelte-e6qsv1">${escape_html(data.content.title)}</div> <div class="main-content-flex svelte-e6qsv1"><div class="image-container-flex-child svelte-e6qsv1"${attr("style", `background-image: url('${stringify(data.content.images[hoveredImageIndex])}')`)}></div> <div class="content-description-flex-child svelte-e6qsv1"><div class="flex flex-wrap gap-2.5"><!--[-->`;
   for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
     let tag = each_array[$$index];
-    $$payload.out += `<div${attr("class", `tag-card ${stringify(tagClassMap[tag])} svelte-1ydpajj`)}>${escape_html(tag)}</div>`;
+    $$payload.out += `<div${attr("class", `tag-card ${stringify(tagClassMap[tag])} svelte-e6qsv1`)}>${escape_html(tag)}</div>`;
   }
-  $$payload.out += `<!--]--></div> <div>Network chart coded with D3</div> <div>FEATURED:</div> <button>View project</button> <div class="mini-image-gallery-flex svelte-1ydpajj"><!--[-->`;
+  $$payload.out += `<!--]--></div> <div>Network chart coded with D3</div> <div>FEATURED:</div> <button>View project</button> <div class="mini-image-gallery-flex svelte-e6qsv1"><!--[-->`;
   for (let i = 0, $$length = each_array_1.length; i < $$length; i++) {
     let image = each_array_1[i];
-    $$payload.out += `<img${attr("src", image)} alt="mini carousel"${attr("class", `svelte-1ydpajj ${stringify([hoveredImageIndex === i ? "active" : ""].filter(Boolean).join(" "))}`)}>`;
+    $$payload.out += `<img${attr("src", image)} alt="mini carousel"${attr("class", `svelte-e6qsv1 ${stringify([hoveredImageIndex === i ? "active" : ""].filter(Boolean).join(" "))}`)}>`;
   }
   $$payload.out += `<!--]--></div></div></div></div>`;
   pop();
@@ -111,38 +111,79 @@ function DataVizCarousel($$payload, $$props) {
   let currentImageIndex = 0;
   const each_array = ensure_array_like(images);
   const each_array_1 = ensure_array_like(images);
-  $$payload.out += `<div class="minimap-container svelte-1713h3s"><div class="img-preview svelte-1713h3s">`;
+  const each_array_2 = ensure_array_like(images);
+  $$payload.out += `<div class="minimap-container svelte-1sgup5m"><div class="img-preview svelte-1sgup5m">`;
   DataViz_ContentCard($$payload, { data: images[currentImageIndex] });
-  $$payload.out += `<!----></div> <div class="minimap svelte-1713h3s"><div class="indicator svelte-1713h3s"></div> <div class="minimap-work-labels svelte-1713h3s"><!--[-->`;
+  $$payload.out += `<!----></div> <div class="minimap svelte-1sgup5m"><div class="indicator svelte-1sgup5m"></div> <div class="minimap-labels svelte-1sgup5m"><!--[-->`;
   for (let i = 0, $$length = each_array.length; i < $$length; i++) {
     each_array[i];
-    $$payload.out += `<div class="minimap-work-label-space svelte-1713h3s"${attr("id", `minimap-work-label-${stringify(i)}`)}>`;
+    $$payload.out += `<div class="minimap-label-space svelte-1sgup5m">`;
     if (i === 0) {
       $$payload.out += "<!--[-->";
-      $$payload.out += `<div class="minimap-work-label svelte-1713h3s"><span class="svelte-1713h3s">HIGHLIGHTED long label WORK</span></div>`;
+      $$payload.out += `<div class="minimap-label work svelte-1sgup5m"><span class="svelte-1sgup5m">HIGHLIGHTED long label WORK</span></div>`;
     } else {
       $$payload.out += "<!--[!-->";
     }
     $$payload.out += `<!--]--> `;
     if (i === 3) {
       $$payload.out += "<!--[-->";
-      $$payload.out += `<div class="minimap-work-label svelte-1713h3s"><span class="svelte-1713h3s">ALL WORK</span></div>`;
+      $$payload.out += `<div class="minimap-label work svelte-1sgup5m"><span class="svelte-1sgup5m">ALL WORK</span></div>`;
+    } else {
+      $$payload.out += "<!--[!-->";
+    }
+    $$payload.out += `<!--]--> `;
+    if (i === 4) {
+      $$payload.out += "<!--[-->";
+      $$payload.out += `<div class="minimap-label work svelte-1sgup5m"><span class="svelte-1sgup5m">TEST</span></div>`;
+    } else {
+      $$payload.out += "<!--[!-->";
+    }
+    $$payload.out += `<!--]--> `;
+    if (i === 5) {
+      $$payload.out += "<!--[-->";
+      $$payload.out += `<div class="minimap-label work svelte-1sgup5m"><span class="svelte-1sgup5m">another test</span></div>`;
+    } else {
+      $$payload.out += "<!--[!-->";
+    }
+    $$payload.out += `<!--]--></div>`;
+  }
+  $$payload.out += `<!--]--></div> <div class="items svelte-1sgup5m"><!--[-->`;
+  for (let i = 0, $$length = each_array_1.length; i < $$length; i++) {
+    let image = each_array_1[i];
+    $$payload.out += `<div class="item svelte-1sgup5m"><img${attr("src", image.src)}${attr("alt", image.title)} class="svelte-1sgup5m"></div>`;
+  }
+  $$payload.out += `<!--]--></div> <div class="minimap-labels svelte-1sgup5m"><!--[-->`;
+  for (let i = 0, $$length = each_array_2.length; i < $$length; i++) {
+    each_array_2[i];
+    $$payload.out += `<div class="minimap-label-space year svelte-1sgup5m">`;
+    if (i === 0) {
+      $$payload.out += "<!--[-->";
+      $$payload.out += `<div class="minimap-label year svelte-1sgup5m"><span class="svelte-1sgup5m">test</span></div>`;
+    } else {
+      $$payload.out += "<!--[!-->";
+    }
+    $$payload.out += `<!--]--> `;
+    if (i === 3) {
+      $$payload.out += "<!--[-->";
+      $$payload.out += `<div class="minimap-label year svelte-1sgup5m"><span class="svelte-1sgup5m">2024</span></div>`;
+    } else {
+      $$payload.out += "<!--[!-->";
+    }
+    $$payload.out += `<!--]--> `;
+    if (i === 5) {
+      $$payload.out += "<!--[-->";
+      $$payload.out += `<div class="minimap-label year svelte-1sgup5m"><span class="svelte-1sgup5m">2023</span></div>`;
     } else {
       $$payload.out += "<!--[!-->";
     }
     $$payload.out += `<!--]--> `;
     if (i === 6) {
       $$payload.out += "<!--[-->";
-      $$payload.out += `<div class="minimap-work-label svelte-1713h3s"><span class="svelte-1713h3s">TEST</span></div>`;
+      $$payload.out += `<div class="minimap-label year svelte-1sgup5m"><span class="svelte-1sgup5m">2022</span></div>`;
     } else {
       $$payload.out += "<!--[!-->";
     }
     $$payload.out += `<!--]--></div>`;
-  }
-  $$payload.out += `<!--]--></div> <div class="items svelte-1713h3s"><!--[-->`;
-  for (let i = 0, $$length = each_array_1.length; i < $$length; i++) {
-    let image = each_array_1[i];
-    $$payload.out += `<div class="item svelte-1713h3s"><img${attr("src", image.src)}${attr("alt", image.title)} class="svelte-1713h3s"></div>`;
   }
   $$payload.out += `<!--]--></div></div></div>`;
   pop();

@@ -5,7 +5,8 @@
     "src": ".svelte-kit/generated/server/internal.js",
     "isEntry": true,
     "imports": [
-      "_internal.js"
+      "_internal.js",
+      "_paths.js"
     ]
   },
   "_attributes.js": {
@@ -52,8 +53,13 @@
     "name": "internal",
     "imports": [
       "_equality.js",
-      "_index2.js"
+      "_index2.js",
+      "_paths.js"
     ]
+  },
+  "_paths.js": {
+    "file": "chunks/paths.js",
+    "name": "paths"
   },
   "node_modules/@sveltejs/kit/src/runtime/components/svelte-5/error.svelte": {
     "file": "entries/fallbacks/error.svelte.js",
@@ -73,6 +79,7 @@
     "isEntry": true,
     "imports": [
       "_internal.js",
+      "_paths.js",
       "_index.js",
       "_exports.js"
     ]
@@ -84,12 +91,13 @@
     "isEntry": true,
     "imports": [
       "_index2.js",
+      "_paths.js",
       "_index3.js",
       "_attributes.js",
       "_escaping.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout.GXztvZGs.css"
+      "_app/immutable/assets/_layout.DQ3vt5xs.css"
     ]
   },
   "src/routes/+page.svelte": {
@@ -128,7 +136,7 @@
       "_attributes.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.CUNfaDjb.css"
+      "_app/immutable/assets/_page.Zy-Kq3Xa.css"
     ]
   },
   "src/routes/writing/+page.js": {

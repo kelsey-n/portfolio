@@ -1,112 +1,115 @@
 <script>
-	import { onMount, onDestroy } from 'svelte';
-	import gsap from 'gsap';
-	import { ScrollTrigger } from 'gsap/ScrollTrigger';
-	import Lenis from 'lenis';
-	import '../app.css';
-	import { page } from '$app/state';
-	let { children } = $props();
+  import { base } from "$app/paths";
+  import { onMount, onDestroy } from "svelte";
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import Lenis from "lenis";
+  import "../app.css";
+  import { page } from "$app/state";
+  let { children } = $props();
 
-	let lenis;
+  export const prerender = true;
 
-	onMount(() => {
-		// Initialize Lenis for smooth scrolling
-		lenis = new Lenis({
-			duration: 0.9, // Adjust for smoother/slower scrolling
-			smooth: true,
-			lerp: 0.1 // Smoother animation flow
-		});
-		// lenis = new Lenis();
+  let lenis;
 
-		// Sync Lenis with requestAnimationFrame
-		function raf(time) {
-			lenis.raf(time);
-			requestAnimationFrame(raf);
-		}
-		requestAnimationFrame(raf);
+  onMount(() => {
+    // Initialize Lenis for smooth scrolling
+    lenis = new Lenis({
+      duration: 0.9, // Adjust for smoother/slower scrolling
+      smooth: true,
+      lerp: 0.1, // Smoother animation flow
+    });
+    // lenis = new Lenis();
 
-		// Register GSAP ScrollTrigger
-		gsap.registerPlugin(ScrollTrigger);
+    // Sync Lenis with requestAnimationFrame
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
 
-		// Update ScrollTrigger whenever Lenis scrolls
-		lenis.on('scroll', ScrollTrigger.update);
+    // Register GSAP ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger);
 
-		// TODO: check https://github.com/darkroomengineering/lenis?tab=readme-ov-file#gsap-scrolltrigger
-		// for more stuff to do to integrate Lenis w/ GSAP
+    // Update ScrollTrigger whenever Lenis scrolls
+    lenis.on("scroll", ScrollTrigger.update);
 
-		return () => {
-			// Cleanup when the component unmounts
-			lenis.destroy();
-		};
-	});
+    // TODO: check https://github.com/darkroomengineering/lenis?tab=readme-ov-file#gsap-scrolltrigger
+    // for more stuff to do to integrate Lenis w/ GSAP
 
-	onDestroy(() => {
-		if (lenis) lenis.destroy();
-	});
+    return () => {
+      // Cleanup when the component unmounts
+      lenis.destroy();
+    };
+  });
+
+  onDestroy(() => {
+    if (lenis) lenis.destroy();
+  });
 </script>
 
 <nav class="bg-navigation flex items-center justify-between p-4">
-	<!-- Home Link with Flower Emoji -->
-	<a
-		href="/"
-		class="relative px-2.5 text-lg text-white transition-colors duration-300 ease-in-out {page.url
-			.pathname === '/'
-			? 'active-link-flower'
-			: 'nav-link'}"
-	>
-		KELSEY NANAN
-	</a>
+  <!-- Home Link with Flower Emoji -->
+  <a
+    href="/"
+    class="relative px-2.5 text-lg text-white transition-colors duration-300 ease-in-out {page
+      .url.pathname === '/'
+      ? 'active-link-flower'
+      : 'nav-link'}"
+  >
+    KELSEY NANAN
+  </a>
 
-	<!-- Navigation Links -->
-	<div class="flex space-x-5">
-		{#each [{ href: '/writing', label: 'Writing' }, { href: '/data-viz', label: 'Data viz' }] as { href, label }}
-			<a
-				{href}
-				class="relative px-1.5 text-lg text-white transition-colors duration-300 ease-in-out
+  <!-- Navigation Links -->
+  <div class="flex space-x-5">
+    {#each [{ href: `${base}/writing`, label: "Writing" }, { href: `${base}/data-viz`, label: "Data viz" }] as { href, label }}
+      <a
+        {href}
+        class="relative px-1.5 text-lg text-white transition-colors duration-300 ease-in-out
                     {page.url.pathname === href ? 'active-link' : 'nav-link'}"
-			>
-				{label}
-			</a>
-		{/each}
-	</div>
+      >
+        {label}
+      </a>
+    {/each}
+  </div>
 </nav>
 
 {@render children()}
 
 <style>
-	/* Hover Effect: Rainbow Underline */
-	.nav-link::after {
-		content: '';
-		position: absolute;
-		left: 0%;
-		bottom: -2px;
-		width: 100%;
-		height: 3px;
-		background: var(--color-rainbow-gradient);
-		transform: scaleX(0);
-		transform-origin: center;
-		transition: transform 0.3s ease-in-out;
-	}
+  /* Hover Effect: Rainbow Underline */
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0%;
+    bottom: -2px;
+    width: 100%;
+    height: 3px;
+    background: var(--color-rainbow-gradient);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease-in-out;
+  }
 
-	.nav-link:hover::after {
-		transform: scaleX(1);
-	}
+  .nav-link:hover::after {
+    transform: scaleX(1);
+  }
 
-	/* Active Link Effect: Full Rainbow Background */
-	.active-link {
-		background: var(--color-rainbow-gradient);
-		color: #000000;
-		font-weight: bold;
-		border-radius: 5px;
-	}
-	.active-link-flower {
-		/* background: var(--color-rainbow-gradient);
+  /* Active Link Effect: Full Rainbow Background */
+  .active-link {
+    background: var(--color-rainbow-gradient);
+    color: #000000;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+  .active-link-flower {
+    /* background: var(--color-rainbow-gradient);
 		-webkit-background-clip: text;
 		background-clip: text;
 		color: black; */
-		background: #000;
-		color: #000000;
-		font-weight: bold;
-		border-radius: 100%;
-	}
+    background: #000;
+    color: #000000;
+    font-weight: bold;
+    border-radius: 100%;
+  }
 </style>

@@ -1,4 +1,5 @@
-import { a as assets, b as base, c as app_dir, p as public_env, s as safe_public_env, o as override, r as reset, D as DEV, d as read_implementation, e as options, g as get_hooks, f as set_private_env, h as prerendering, i as set_public_env, j as set_safe_public_env, k as set_read_implementation } from "./chunks/internal.js";
+import { p as public_env, s as safe_public_env, D as DEV, r as read_implementation, o as options, g as get_hooks, a as set_private_env, b as prerendering, c as set_public_env, d as set_safe_public_env, e as set_read_implementation } from "./chunks/internal.js";
+import { a as assets, b as base, c as app_dir, o as override, r as reset } from "./chunks/paths.js";
 import { j as json, t as text } from "./chunks/index.js";
 import * as devalue from "devalue";
 import { m as make_trackable, d as disable_search, a as decode_params, r as readable, w as writable, n as normalize_path, b as resolve, c as decode_pathname, v as validate_layout_server_exports, e as validate_layout_exports, f as validate_page_server_exports, g as validate_page_exports, h as validate_server_exports } from "./chunks/exports.js";
@@ -2712,7 +2713,7 @@ async function respond(request, options2, manifest, state) {
     fetch: null,
     getClientAddress: state.getClientAddress || (() => {
       throw new Error(
-        `${"@sveltejs/adapter-auto"} does not specify getClientAddress. Please raise an issue`
+        `${"@sveltejs/adapter-static"} does not specify getClientAddress. Please raise an issue`
       );
     }),
     locals: {},
