@@ -661,7 +661,7 @@
     opacity: 0.3;
   }
 
-  @media (max-width: 1680px) {
+  @media (max-width: 9999999px) {
     /* body {
 			overflow: hidden;
 			touch-action: none;
