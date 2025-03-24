@@ -8,8 +8,6 @@
   import { page } from "$app/state";
   let { children } = $props();
 
-  export const prerender = true;
-
   let lenis;
 
   onMount(() => {

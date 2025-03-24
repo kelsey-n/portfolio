@@ -1,4 +1,4 @@
-import { d as current_component, e as ensure_array_like, f as stringify, g as bind_props, c as pop, p as push } from "../../chunks/index2.js";
+import { d as current_component, e as ensure_array_like, f as stringify, c as pop, p as push } from "../../chunks/index2.js";
 import { b as base } from "../../chunks/paths.js";
 import { p as page } from "../../chunks/index3.js";
 import { a as attr } from "../../chunks/attributes.js";
@@ -13,7 +13,6 @@ function onDestroy(fn) {
 function _layout($$payload, $$props) {
   push();
   let { children } = $$props;
-  const prerender = true;
   onDestroy(() => {
   });
   const each_array = ensure_array_like([
@@ -28,7 +27,6 @@ function _layout($$payload, $$props) {
   $$payload.out += `<!--]--></div></nav> `;
   children($$payload);
   $$payload.out += `<!---->`;
-  bind_props($$props, { prerender });
   pop();
 }
 export {

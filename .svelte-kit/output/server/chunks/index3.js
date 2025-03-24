@@ -1,7 +1,7 @@
 import "clsx";
 import { n as noop } from "./equality.js";
 import { w as writable } from "./exports.js";
-import { h as getContext } from "./index2.js";
+import { g as getContext } from "./index2.js";
 const SNAPSHOT_KEY = "sveltekit:snapshot";
 const SCROLL_KEY = "sveltekit:scroll";
 function create_updated_store() {

@@ -116,8 +116,8 @@ export {
   current_component as d,
   ensure_array_like as e,
   stringify as f,
-  bind_props as g,
-  getContext as h,
+  getContext as g,
+  bind_props as h,
   push as p,
   render as r,
   setContext as s
