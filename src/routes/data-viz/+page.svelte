@@ -1,5 +1,8 @@
 <script>
-	import DataVizCarousel from '$lib/components/DataVizCarousel.svelte';
+  import DataVizCarousel from "$lib/components/DataVizCarousel.svelte";
+
+  export let data;
+  let projects = data.projects;
 </script>
 
-<DataVizCarousel />
+<DataVizCarousel data={projects} />

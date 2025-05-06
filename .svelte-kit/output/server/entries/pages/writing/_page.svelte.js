@@ -1,4 +1,4 @@
-import { e as ensure_array_like, f as stringify, h as bind_props, c as pop, p as push } from "../../../chunks/index2.js";
+import { e as ensure_array_like, d as stringify, f as bind_props, c as pop, p as push } from "../../../chunks/index2.js";
 import "split-type";
 import { e as escape_html } from "../../../chunks/escaping.js";
 import { a as attr } from "../../../chunks/attributes.js";

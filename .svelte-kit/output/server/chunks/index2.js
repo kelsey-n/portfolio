@@ -113,11 +113,10 @@ export {
   HYDRATION_START as a,
   HYDRATION_END as b,
   pop as c,
-  current_component as d,
+  stringify as d,
   ensure_array_like as e,
-  stringify as f,
+  bind_props as f,
   getContext as g,
-  bind_props as h,
   push as p,
   render as r,
   setContext as s

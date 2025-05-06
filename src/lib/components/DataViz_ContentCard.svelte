@@ -1,6 +1,6 @@
 <script>
   import { tagClassMap } from "../../constants.js";
-  let { data } = $props();
+  let { data, imageFolder } = $props();
 
   let hoveredImageIndex = $state(0);
 
@@ -16,49 +16,56 @@
 
 <div class="img-preview-content">
   <div class="content-title">
-    {data.content.title}
+    {data.title}
   </div>
   <div class="main-content-flex">
     <div
       class="image-container-flex-child"
-      style="background-image: url('{data.content.images[hoveredImageIndex]}')"
+      style="background-image: url('/images/data-viz-page/{imageFolder}/{data
+        .images[hoveredImageIndex]}')"
     ></div>
     <div class="content-description-flex-child">
       <div class="flex flex-wrap gap-2.5">
-        {#each data.content.tags as tag}
+        <!-- {#each data.tags as tag}
           <div class="tag-card {tagClassMap[tag]}">{tag}</div>
-        {/each}
+        {/each} -->
       </div>
-      <div>Network chart coded with D3</div>
-      <div>FEATURED:</div>
-      <button>View project</button>
+      <div class="project-description">Network chart coded with D3</div>
+      <div class="project-meta">
+        <div><strong>FEATURED:</strong> San Francisco Standard</div>
+        <div><strong>HONORS:</strong> IIB Awards 2024 Longlist</div>
+      </div>
+      <div class="image-description">
+        current image description - INCLUDE TOOLS HERE IN LIEU OF TAGS
+      </div>
       <div class="mini-image-gallery-flex">
-        {#each data.content.images as image, i}
+        {#each data.images as image, i}
           <img
-            src={image}
+            src="/images/data-viz-page/{imageFolder}/{image}"
             alt="mini carousel"
             onmouseenter={() => updateHoveredImageIndex(i)}
             class:active={hoveredImageIndex === i}
           />
         {/each}
       </div>
+      <button class="view-project">View project</button>
     </div>
   </div>
 </div>
 
 <style>
   .content-title {
-    font-size: 32px;
+    font-size: 2rem;
+    font-weight: 600;
     display: flex;
     justify-content: center;
-    padding-bottom: 2%;
-    padding-top: 5%; /* FOR TESTING MINIMAP, NEED TO REMOVE WHEN DOING FINAL SIZING */
+    padding-top: 13px;
   }
 
   .main-content-flex {
     display: flex;
-    border: 1px solid;
     height: calc(100vh - 300px);
+    gap: 25px;
   }
 
   .image-container-flex-child {
@@ -73,7 +80,8 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: flex-start;
+    gap: 10px;
   }
 
   .mini-image-gallery-flex {
@@ -89,11 +97,41 @@
     min-height: 70px;
     border-radius: 3px;
     cursor: pointer;
-    transition: all 0.2s ease-in-out;
+    transition: opacity 0.2s ease;
   }
 
   .mini-image-gallery-flex img.active {
     opacity: 0.5;
+    border: 1px solid black;
+  }
+
+  .project-meta {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.5rem;
+  }
+
+  .project-description {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .image-description {
+    font-style: italic;
+  }
+
+  .view-project {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #1a1a1a;
+    text-decoration: underline;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+
+  .view-project:hover {
+    color: #003366;
   }
 
   .tag-card {

@@ -2,6 +2,8 @@
   import { onMount } from "svelte";
   import DataVizContentCard from "./DataViz_ContentCard.svelte";
 
+  let { data } = $props();
+
   let images = [
     {
       src: "/images/PLACEHOLDER.png",
@@ -77,7 +79,7 @@
     },
   ];
 
-  let currentImageIndex = 0;
+  let currentImageIndex = $state(0);
   const mediaBreakWidth = 9999999;
 
   // dataset of content for each viz
@@ -466,7 +468,10 @@
 
 <div class="minimap-container">
   <div class="img-preview">
-    <DataVizContentCard data={images[currentImageIndex]} />
+    <DataVizContentCard
+      data={data[currentImageIndex].content}
+      imageFolder={data[currentImageIndex].imageFolder}
+    />
   </div>
   <!-- Horizontal Scrolling Gallery -->
   <div class="minimap">
@@ -474,7 +479,7 @@
       <!-- <div class="indicator-left-border"></div> -->
     </div>
     <div class="minimap-labels">
-      {#each images as image, i}
+      {#each data as image, i}
         <div class="minimap-label-space">
           {#if i === 0}<div class="minimap-label work">
               <span>HIGHLIGHTED long label WORK</span>
@@ -492,16 +497,19 @@
       {/each}
     </div>
     <div class="items">
-      {#each images as image, i}
+      {#each data as image, i}
         <!-- {#if i === 0 || i === 3}<div class="vertical-separator"></div>{/if} -->
         <div class="item">
-          <img src={image.src} alt={image.title} />
+          <img
+            src="/images/data-viz-page/{image.imageFolder}/carouselImage.png"
+            alt={image.mainImageAlt}
+          />
           <!-- <p class="year">2020</p> -->
         </div>
       {/each}
     </div>
     <div class="minimap-labels">
-      {#each images as image, i}
+      {#each data as image, i}
         <div class="minimap-label-space year">
           {#if i === 0}<div class="minimap-label year">
               <span>test</span>

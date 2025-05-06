@@ -9,6 +9,22 @@
       "_paths.js"
     ]
   },
+  "_DataViz_ContentCard.BlIi4QpS.css": {
+    "file": "_app/immutable/assets/DataViz_ContentCard.BlIi4QpS.css",
+    "src": "_DataViz_ContentCard.BlIi4QpS.css"
+  },
+  "_DataViz_ContentCard.js": {
+    "file": "chunks/DataViz_ContentCard.js",
+    "name": "DataViz_ContentCard",
+    "imports": [
+      "_index2.js",
+      "_escaping.js",
+      "_attributes.js"
+    ],
+    "css": [
+      "_app/immutable/assets/DataViz_ContentCard.BlIi4QpS.css"
+    ]
+  },
   "_attributes.js": {
     "file": "chunks/attributes.js",
     "name": "attributes",
@@ -103,7 +119,7 @@
       "_escaping.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout.Ds6L_0lj.css"
+      "_app/immutable/assets/_layout.C8DeBkyB.css"
     ]
   },
   "src/routes/+page.svelte": {
@@ -116,7 +132,7 @@
       "_index.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.2iGnW8N5.css"
+      "_app/immutable/assets/_page.tn0RQdqM.css"
     ]
   },
   "src/routes/about/+page.svelte": {
@@ -131,6 +147,32 @@
     "src": "src/routes/contact/+page.svelte",
     "isEntry": true
   },
+  "src/routes/data-viz-2/+page.js": {
+    "file": "entries/pages/data-viz-2/_page.js",
+    "name": "entries/pages/data-viz-2/_page",
+    "src": "src/routes/data-viz-2/+page.js",
+    "isEntry": true
+  },
+  "src/routes/data-viz-2/+page.svelte": {
+    "file": "entries/pages/data-viz-2/_page.svelte.js",
+    "name": "entries/pages/data-viz-2/_page.svelte",
+    "src": "src/routes/data-viz-2/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index2.js",
+      "_DataViz_ContentCard.js",
+      "_attributes.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.B1LL833r.css"
+    ]
+  },
+  "src/routes/data-viz/+page.js": {
+    "file": "entries/pages/data-viz/_page.js",
+    "name": "entries/pages/data-viz/_page",
+    "src": "src/routes/data-viz/+page.js",
+    "isEntry": true
+  },
   "src/routes/data-viz/+page.svelte": {
     "file": "entries/pages/data-viz/_page.svelte.js",
     "name": "entries/pages/data-viz/_page.svelte",
@@ -138,11 +180,11 @@
     "isEntry": true,
     "imports": [
       "_index2.js",
-      "_escaping.js",
+      "_DataViz_ContentCard.js",
       "_attributes.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.DDusWJ8b.css"
+      "_app/immutable/assets/_page.BvhASUuG.css"
     ]
   },
   "src/routes/writing/+page.js": {

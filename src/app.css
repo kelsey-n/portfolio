@@ -1,37 +1,42 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @font-face {
-	font-family: 'Caveat';
-	src: url('/fonts/Caveat-Regular.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
+  font-family: "Caveat";
+  src: url("/fonts/Caveat-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 @font-face {
-	font-family: 'Pacifico';
-	src: url('/fonts/Pacifico-Regular.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
+  font-family: "Pacifico";
+  src: url("/fonts/Pacifico-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 @font-face {
-	font-family: 'Marcellus';
-	src: url('/fonts/Marcellus-Regular.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
+  font-family: "Marcellus";
+  src: url("/fonts/Marcellus-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 html,
 body {
-	background-color: #021a2b;
-	color: #fff;
-	font-family: 'Marcellus', sans-serif;
+  color: #021a2b;
+  background-color: #f2f2f2;
+  font-family: "Marcellus", sans-serif;
 }
 
 @theme {
-	--color-gray: #d3d3d3;
-	--color-rainbow-gradient: linear-gradient(60deg, #ff3caa 0%, #ff8a0c 50%, #ffe83f 100%);
-	--color-pink: #ff3caa;
-	--color-light-yellow: rgba(255, 208, 77, 0.9);
-	--font-Caveat: 'Caveat', cursive;
-	--font-Pacifico: 'Pacifico', cursive;
-	--font-Marcellus: 'Marcellus', sans-serif;
+  --color-gray: #d3d3d3;
+  --color-rainbow-gradient: linear-gradient(
+    60deg,
+    #ff3caa 0%,
+    #ff8a0c 50%,
+    #ffe83f 100%
+  );
+  --color-pink: #ff3caa;
+  --color-light-yellow: rgba(255, 208, 77, 0.9);
+  --font-Caveat: "Caveat", cursive;
+  --font-Pacifico: "Pacifico", cursive;
+  --font-Marcellus: "Marcellus", sans-serif;
 }

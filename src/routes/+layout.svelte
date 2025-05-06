@@ -8,51 +8,53 @@
   import { page } from "$app/state";
   let { children } = $props();
 
-  let lenis;
+  // let lenis;
 
-  onMount(() => {
-    // Initialize Lenis for smooth scrolling
-    lenis = new Lenis({
-      duration: 0.9, // Adjust for smoother/slower scrolling
-      smooth: true,
-      lerp: 0.1, // Smoother animation flow
-    });
-    // lenis = new Lenis();
+  // onMount(() => {
+  //   // Initialize Lenis for smooth scrolling
+  //   lenis = new Lenis({
+  //     duration: 0.9, // Adjust for smoother/slower scrolling
+  //     smooth: true,
+  //     lerp: 0.1, // Smoother animation flow
+  //   });
+  //   // lenis = new Lenis();
 
-    // Sync Lenis with requestAnimationFrame
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
+  //   // Sync Lenis with requestAnimationFrame
+  //   function raf(time) {
+  //     lenis.raf(time);
+  //     requestAnimationFrame(raf);
+  //   }
+  //   requestAnimationFrame(raf);
 
-    // Register GSAP ScrollTrigger
-    gsap.registerPlugin(ScrollTrigger);
+  //   // Register GSAP ScrollTrigger
+  //   gsap.registerPlugin(ScrollTrigger);
 
-    // Update ScrollTrigger whenever Lenis scrolls
-    lenis.on("scroll", ScrollTrigger.update);
+  //   // Update ScrollTrigger whenever Lenis scrolls
+  //   lenis.on("scroll", ScrollTrigger.update);
 
-    // TODO: check https://github.com/darkroomengineering/lenis?tab=readme-ov-file#gsap-scrolltrigger
-    // for more stuff to do to integrate Lenis w/ GSAP
+  //   // TODO: check https://github.com/darkroomengineering/lenis?tab=readme-ov-file#gsap-scrolltrigger
+  //   // for more stuff to do to integrate Lenis w/ GSAP
 
-    return () => {
-      // Cleanup when the component unmounts
-      lenis.destroy();
-    };
-  });
+  //   return () => {
+  //     // Cleanup when the component unmounts
+  //     lenis.destroy();
+  //   };
+  // });
 
-  onDestroy(() => {
-    if (lenis) lenis.destroy();
-  });
+  // onDestroy(() => {
+  //   if (lenis) lenis.destroy();
+  // });
 </script>
 
-<nav class="bg-navigation flex items-center justify-between p-4">
+<nav
+  class="bg-navigation flex items-center justify-between p-4 bg-white border-b-2 border-b-[var(--color-pink)]"
+>
   <!-- Home Link with Flower Emoji -->
   <a
     href="/"
-    class="relative px-2.5 text-lg text-white transition-colors duration-300 ease-in-out {page
+    class="relative px-2.5 text-lg text-black transition-colors duration-300 ease-in-out {page
       .url.pathname === '/'
-      ? 'active-link-flower'
+      ? 'active-link'
       : 'nav-link'}"
   >
     KELSEY NANAN
@@ -60,10 +62,10 @@
 
   <!-- Navigation Links -->
   <div class="flex space-x-5">
-    {#each [{ href: `${base}/writing`, label: "Writing" }, { href: `${base}/data-viz`, label: "Data viz" }] as { href, label }}
+    {#each [{ href: `${base}/writing`, label: "Writing" }, { href: `${base}/data-viz`, label: "Data viz" }, { href: `${base}/data-viz-2`, label: "Data viz 2" }] as { href, label }}
       <a
         {href}
-        class="relative px-1.5 text-lg text-white transition-colors duration-300 ease-in-out
+        class="relative px-1.5 text-lg text-black transition-colors duration-300 ease-in-out
                     {page.url.pathname === href ? 'active-link' : 'nav-link'}"
       >
         {label}
