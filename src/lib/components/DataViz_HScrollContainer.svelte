@@ -62,8 +62,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    --minimap-small-value: 120px;
-    --minimap-big-value: 160px;
+    --minimap-small-value: 100px;
+    --minimap-big-value: 130px;
     /* scroll-behavior: smooth; */
   }
 

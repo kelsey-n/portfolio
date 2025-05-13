@@ -49,7 +49,18 @@
   });
 </script>
 
-<h1 class="flex justify-center text-2xl">🛠️🚧</h1>
+<!-- <h1 class="flex justify-center text-2xl">🛠️🚧</h1> -->
+
+<div class="intro-container">
+  <img src="/images/flower headshot 1.png" />
+  <div>
+    Hi, I’m Kelsey!<br /><br />
+    I’m a data visualization developer and creative storyteller based in New York.<br
+    /><br />
+    As a technical collaborator, I help communicate insights from data, enabling
+    clients to tell their story in a way that will resonate with their audience.
+  </div>
+</div>
 
 <!-- <section class="grid h-screen place-content-center px-[clamp(4rem,12vw,20rem)]">
 	<p class="text reveal-type w-full px-4 md:w-1/2">
@@ -71,6 +82,20 @@
 <section class="grid h-screen place-content-center px-[clamp(4rem,12vw,20rem)]"></section> -->
 
 <style>
+  .intro-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 5em;
+    font-size: 25px;
+    padding: 2em 6em;
+    align-items: center;
+  }
+
+  .intro-container img {
+    flex-grow: 4;
+  }
+
   .text {
     color: white;
   }

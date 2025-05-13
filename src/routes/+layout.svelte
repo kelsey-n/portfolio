@@ -62,7 +62,7 @@
 
   <!-- Navigation Links -->
   <div class="flex space-x-5">
-    {#each [{ href: `${base}/writing`, label: "Writing" }, { href: `${base}/data-viz`, label: "Data viz" }, { href: `${base}/data-viz-2`, label: "Data viz 2" }] as { href, label }}
+    {#each [{ href: `${base}/writing`, label: "Writing" }, { href: `${base}/writing-2`, label: "Writing 2" }, { href: `${base}/data-viz`, label: "Data viz" }, { href: `${base}/data-viz-2`, label: "Data viz 2" }] as { href, label }}
       <a
         {href}
         class="relative px-1.5 text-lg text-black transition-colors duration-300 ease-in-out
