@@ -36,16 +36,18 @@
     <!-- <div class="indicator"></div> -->
     <div class="items">
       {#each data as image, i}
-        <!-- <button class="item" on:click={() => (currentImageIndex = i)}> -->
-        <button
-          class="item {i === currentImageIndex ? 'active' : 'inactive'}"
-          on:click={() => setActiveImage(i)}
-        >
-          <img
-            src="/images/data-viz-page/{image.imageFolder}/carouselImage.png"
-            alt={image.mainImageAlt}
-          />
-        </button>
+        {#if image.show === "Y"}
+          <!-- <button class="item" on:click={() => (currentImageIndex = i)}> -->
+          <button
+            class="item {i === currentImageIndex ? 'active' : 'inactive'}"
+            on:click={() => setActiveImage(i)}
+          >
+            <img
+              src="/images/data-viz-page/{image.imageFolder}/carouselImage.png"
+              alt={image.mainImageAlt}
+            />
+          </button>
+        {/if}
       {/each}
     </div>
   </div>
@@ -70,12 +72,15 @@
   .minimap {
     /* width: 100vw; */
     width: 100%;
-    height: calc(var(--minimap-big-value) + 10px);
+    height: calc(var(--minimap-big-value) + 25px);
     background-color: #f5f5f3;
-    overflow-x: scroll;
+    /* overflow-x: scroll; REMOVING FOR NOW, TO TRY TO FIX WEIRD SCROLL BAR WHEN IT'S NOT NEEDED*/
     white-space: nowrap;
     overflow-y: hidden;
     box-shadow: 0 4px 4.5px rgba(0, 0, 0, 0.3); /* drop shadow */
+    position: sticky;
+    z-index: 9999;
+    top: 0px;
   }
 
   .items {
@@ -124,10 +129,15 @@
   .item.inactive img {
     opacity: 0.3;
     transform: scale(0.9);
+    transition: all 0.3s ease;
+  }
+
+  .item.inactive img:hover {
+    opacity: 1;
   }
 
   .item.active img {
-    opacity: 1;
+    opacity: 0.9;
     transform: scale(1);
     height: var(--minimap-big-value);
     border: 1.5px solid var(--color-pink);

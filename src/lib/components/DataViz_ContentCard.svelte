@@ -2,7 +2,21 @@
   import { tagClassMap } from "../../constants.js";
   let { data, imageFolder } = $props();
 
+  console.log(data);
+
   let hoveredImageIndex = $state(0);
+
+  // $effect: currentImage = data.images[hoveredImageIndex] ?? data.images[0]
+
+  // const currentImage = $derived(
+  //   () => data.images?.[hoveredImageIndex] ?? data.images?.[0]
+  // );
+
+  $effect(() => {
+    if (hoveredImageIndex >= data.images?.length) {
+      hoveredImageIndex = 0;
+    }
+  });
 
   function updateHoveredImageIndex(i) {
     hoveredImageIndex = i;
@@ -16,7 +30,7 @@
 
 <div class="img-preview-content">
   <div class="content-title">
-    {data.title}
+    {data.title} ({data.year})
   </div>
   <div class="main-content-flex">
     <div
@@ -30,13 +44,36 @@
           <div class="tag-card {tagClassMap[tag]}">{tag}</div>
         {/each} -->
       </div>
-      <div class="project-description">Network chart coded with D3</div>
+      <div class="project-description">{data.description}</div>
       <div class="project-meta">
-        <div><strong>FEATURED:</strong> San Francisco Standard</div>
-        <div><strong>HONORS:</strong> IIB Awards 2024 Longlist</div>
-      </div>
-      <div class="image-description">
-        current image description - INCLUDE TOOLS HERE IN LIEU OF TAGS
+        {#if data.client}<div>
+            <strong>CLIENT:</strong>
+            {data.client}
+          </div>{/if}
+        {#if data.featured[0] !== ""}<div>
+            <strong>FEATURED: </strong>
+            {#each data.featured as link_text, i (link_text)}
+              <a
+                href={data.featured_links[i]}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {link_text}
+              </a>{i < data.featured.length - 1 ? ", " : ""}
+            {/each}
+          </div>{/if}
+        {#if data.honors[0] !== ""}<div>
+            <strong>HONORS:</strong>
+            {#each data.honors as link_text, i (link_text)}
+              <a
+                href={data.honors_links[i]}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {link_text}
+              </a>{i < data.featured.length - 1 ? ", " : ""}
+            {/each}
+          </div>{/if}
       </div>
       <div class="mini-image-gallery-flex">
         {#each data.images as image, i}
@@ -48,7 +85,17 @@
           />
         {/each}
       </div>
-      <button class="view-project">View project</button>
+      <a
+        class="view-project"
+        href={data.content_link}
+        target="_blank"
+        rel="noopener noreferrer"
+        >View project
+      </a>
+
+      <div class="image-description">
+        {data.image_descriptions[hoveredImageIndex]}
+      </div>
     </div>
   </div>
 </div>
@@ -64,8 +111,10 @@
 
   .main-content-flex {
     display: flex;
-    height: calc(100vh - 300px);
+    height: calc(100vh - 140px - 62px - 61px);
     gap: 25px;
+    margin: 0 8em;
+    /* align-items: flex-start; */
   }
 
   .image-container-flex-child {
@@ -103,6 +152,7 @@
   .mini-image-gallery-flex img.active {
     opacity: 0.5;
     border: 1px solid black;
+    /* box-shadow: inset 5px #f00; */
   }
 
   .project-meta {
@@ -122,16 +172,23 @@
   }
 
   .view-project {
-    font-size: 1.05rem;
+    font-size: 20px;
     font-weight: 500;
-    color: #1a1a1a;
-    text-decoration: underline;
-    transition: all 0.2s ease;
-    cursor: pointer;
+    color: #ff8a0c;
   }
 
-  .view-project:hover {
+  /* .view-project:hover {
     color: #003366;
+  } */
+
+  a {
+    color: #ff8a0c;
+    text-decoration: underline;
+    transition: all 0.3s ease;
+  }
+
+  a:hover {
+    box-shadow: 0 4px 4.5px rgba(0, 0, 0, 0.3);
   }
 
   .tag-card {
@@ -146,5 +203,20 @@
 
   .design {
     background-color: blueviolet;
+  }
+
+  @media (max-width: 1000px) {
+    .main-content-flex {
+      flex-direction: column-reverse;
+      height: 100vh;
+      gap: 5px;
+      padding: 0 20px;
+    }
+    .content-description-flex-child {
+      flex: unset;
+    }
+    .image-container-flex-child {
+      width: 100%;
+    }
   }
 </style>

@@ -9,9 +9,9 @@
       "_paths.js"
     ]
   },
-  "_DataViz_ContentCard.BlIi4QpS.css": {
-    "file": "_app/immutable/assets/DataViz_ContentCard.BlIi4QpS.css",
-    "src": "_DataViz_ContentCard.BlIi4QpS.css"
+  "_DataViz_ContentCard.DA03ZpB2.css": {
+    "file": "_app/immutable/assets/DataViz_ContentCard.DA03ZpB2.css",
+    "src": "_DataViz_ContentCard.DA03ZpB2.css"
   },
   "_DataViz_ContentCard.js": {
     "file": "chunks/DataViz_ContentCard.js",
@@ -22,7 +22,7 @@
       "_attributes.js"
     ],
     "css": [
-      "_app/immutable/assets/DataViz_ContentCard.BlIi4QpS.css"
+      "_app/immutable/assets/DataViz_ContentCard.DA03ZpB2.css"
     ]
   },
   "_attributes.js": {
@@ -119,7 +119,7 @@
       "_escaping.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout.C8DeBkyB.css"
+      "_app/immutable/assets/_layout.CDF3ANfp.css"
     ]
   },
   "src/routes/+page.svelte": {
@@ -132,7 +132,7 @@
       "_index.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.tn0RQdqM.css"
+      "_app/immutable/assets/_page.CJ6YFgxl.css"
     ]
   },
   "src/routes/about/+page.svelte": {
@@ -164,7 +164,7 @@
       "_attributes.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.B1LL833r.css"
+      "_app/immutable/assets/_page.BDotKJIu.css"
     ]
   },
   "src/routes/data-viz/+page.js": {
@@ -185,6 +185,26 @@
     ],
     "css": [
       "_app/immutable/assets/_page.BvhASUuG.css"
+    ]
+  },
+  "src/routes/writing-2/+page.js": {
+    "file": "entries/pages/writing-2/_page.js",
+    "name": "entries/pages/writing-2/_page",
+    "src": "src/routes/writing-2/+page.js",
+    "isEntry": true
+  },
+  "src/routes/writing-2/+page.svelte": {
+    "file": "entries/pages/writing-2/_page.svelte.js",
+    "name": "entries/pages/writing-2/_page.svelte",
+    "src": "src/routes/writing-2/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index2.js",
+      "_attributes.js",
+      "_escaping.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.DXBy2ug2.css"
     ]
   },
   "src/routes/writing/+page.js": {

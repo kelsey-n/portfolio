@@ -6,12 +6,12 @@ function DataViz_HScrollContainer($$payload, $$props) {
   let { data } = $$props;
   let currentImageIndex = 0;
   const each_array = ensure_array_like(data);
-  $$payload.out += `<div class="minimap-container svelte-12b5cnn"><div class="minimap svelte-12b5cnn"><div class="items svelte-12b5cnn"><!--[-->`;
+  $$payload.out += `<div class="minimap-container svelte-42h9k7"><div class="minimap svelte-42h9k7"><div class="items svelte-42h9k7"><!--[-->`;
   for (let i = 0, $$length = each_array.length; i < $$length; i++) {
     let image = each_array[i];
-    $$payload.out += `<button${attr("class", `item ${stringify(i === currentImageIndex ? "active" : "inactive")} svelte-12b5cnn`)}><img${attr("src", `/images/data-viz-page/${stringify(image.imageFolder)}/carouselImage.png`)}${attr("alt", image.mainImageAlt)} class="svelte-12b5cnn"></button>`;
+    $$payload.out += `<button${attr("class", `item ${stringify(i === currentImageIndex ? "active" : "inactive")} svelte-42h9k7`)}><img${attr("src", `/images/data-viz-page/${stringify(image.imageFolder)}/carouselImage.png`)}${attr("alt", image.mainImageAlt)} class="svelte-42h9k7"></button>`;
   }
-  $$payload.out += `<!--]--></div></div> <div class="img-preview svelte-12b5cnn">`;
+  $$payload.out += `<!--]--></div></div> <div class="img-preview svelte-42h9k7">`;
   DataViz_ContentCard($$payload, {
     data: data[currentImageIndex].content,
     imageFolder: data[currentImageIndex].imageFolder

@@ -24,8 +24,6 @@
     highlightedArticleIndex = article.index;
     highlightedArticleImage = `/images/writing-page/header-${highlightedArticleIndex}.png`;
 
-    console.log(highlightedArticleIndex);
-
     const hoveredArticle = document.getElementById(`article-${article.index}`);
   }
 
@@ -70,6 +68,7 @@
           class:article-item-hovered={article.index === highlightedArticleIndex}
           id="article-{article.index}"
           on:mouseenter={() => updateQuote(article)}
+          on:click={() => window.open(article.href, "_blank")}
           transition:fade
         >
           <span>
@@ -92,6 +91,8 @@
           class="all-work-article article-item"
           class:article-item-hovered={article.index === highlightedArticleIndex}
           on:mouseenter={() => updateQuote(article)}
+          on:click={() => window.open(article.href, "_blank")}
+          transition:fade
         >
           <span>
             <a href="#" class="article-title">{article.articleName}</a>
@@ -140,7 +141,7 @@
     color: black;
     /* font-family: "Courier New", Courier, monospace; */
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 25px;
+    font-size: 22px;
     font-style: italic;
     font-weight: 900;
     display: -webkit-box;
@@ -193,11 +194,14 @@
 
   .article-item {
     color: #9ca3af;
-    transition: color 0.4s ease;
+    /* transition: color 0.4s ease; */
+    transition: all 0.3s ease;
   }
 
   .article-item-hovered {
-    color: black;
+    color: #ff8a0c;
+    text-decoration: underline;
+    box-shadow: 0 4px 4.5px rgba(0, 0, 0, 0.3);
   }
 
   /* .article-item:hover {
