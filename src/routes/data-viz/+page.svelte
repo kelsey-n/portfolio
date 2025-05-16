@@ -1,8 +1,8 @@
 <script>
-  import DataVizCarousel from "$lib/components/DataVizCarousel.svelte";
+  import DataVizPage from "$lib/components/DataViz_HScrollContainer.svelte";
 
   export let data;
   let projects = data.projects;
 </script>
 
-<DataVizCarousel data={projects} />
+<DataVizPage data={projects} />

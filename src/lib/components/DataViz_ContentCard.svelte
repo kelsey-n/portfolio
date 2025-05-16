@@ -2,8 +2,6 @@
   import { tagClassMap } from "../../constants.js";
   let { data, imageFolder } = $props();
 
-  console.log(data);
-
   let hoveredImageIndex = $state(0);
 
   // $effect: currentImage = data.images[hoveredImageIndex] ?? data.images[0]
@@ -85,13 +83,15 @@
           />
         {/each}
       </div>
-      <a
-        class="view-project"
-        href={data.content_link}
-        target="_blank"
-        rel="noopener noreferrer"
-        >View project
-      </a>
+      <button>
+        <a
+          class="view-project"
+          href={data.content_link}
+          target="_blank"
+          rel="noopener noreferrer"
+          >View project
+        </a></button
+      >
 
       <div class="image-description">
         {data.image_descriptions[hoveredImageIndex]}
@@ -208,9 +208,15 @@
   @media (max-width: 1000px) {
     .main-content-flex {
       flex-direction: column-reverse;
-      height: 100vh;
+      height: 120vh;
+      /* height: auto; */
       gap: 5px;
       padding: 0 20px;
+      margin: 0 5px;
+    }
+    .content-title {
+      padding-left: 13px;
+      padding-right: 13px;
     }
     .content-description-flex-child {
       flex: unset;

@@ -1399,7 +1399,7 @@ const options = {
   root,
   service_worker: false,
   templates: {
-    app: ({ head, body, assets, nonce, env }) => '<!doctype html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<link rel="icon" href="' + assets + '/favicon.png" />\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\n		' + head + '\n	</head>\n	<body data-sveltekit-preload-data="hover">\n		<div style="display: contents">' + body + "</div>\n	</body>\n</html>\n",
+    app: ({ head, body, assets, nonce, env }) => '<!doctype html>\n<html lang="en">\n  <head>\n    <meta charset="utf-8" />\n    <link\n      rel="icon"\n      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>"\n    />\n    <meta name="viewport" content="width=device-width, initial-scale=1" />\n    <title>Kelsey Nanan – Data Viz Portfolio</title>\n    <!-- For Google / SEO -->\n    <meta\n      name="description"\n      content="Portfolio of data visualization, written work, and other published content by Kelsey Nanan."\n    />\n\n    <!-- For Social Media (Open Graph) -->\n    <meta property="og:title" content="Kelsey Nanan – Portfolio" />\n    <meta\n      property="og:description"\n      content="Creative data storytelling through code, charts, and design."\n    />\n    <meta\n      property="og:image"\n      content="https://kelseynanan.pages.dev/images/social-preview.png"\n    />\n    <meta property="og:url" content="https://kelseynanan.pages.dev" />\n    <meta property="og:type" content="website" />\n\n    ' + head + '\n  </head>\n  <body data-sveltekit-preload-data="hover">\n    <div style="display: contents">' + body + "</div>\n  </body>\n</html>\n",
     error: ({ status, message }) => '<!doctype html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<title>' + message + `</title>
 
 		<style>
@@ -1471,7 +1471,7 @@ const options = {
 		<div class="error">
 			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
   },
-  version_hash: "8vq6ev"
+  version_hash: "b19d7b"
 };
 async function get_hooks() {
   let handle;

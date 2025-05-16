@@ -49,7 +49,6 @@
 <nav
   class="bg-navigation flex items-center justify-between p-4 bg-white border-b-2 border-b-[var(--color-pink)]"
 >
-  <!-- Home Link with Flower Emoji -->
   <a
     href="/"
     class="relative px-2.5 text-lg text-black transition-colors duration-300 ease-in-out {page
@@ -57,18 +56,24 @@
       ? 'active-link'
       : 'nav-link'}"
   >
-    KELSEY NANAN
+    <span class="hidden sm:inline">KELSEY NANAN</span>
+    <span class="inline sm:hidden">KN</span>
   </a>
 
   <!-- Navigation Links -->
   <div class="flex space-x-5">
-    {#each [{ href: `${base}/writing-2`, label: "Writing" }, { href: `${base}/data-viz-2`, label: "Data viz" }] as { href, label }}
+    {#each [{ href: `${base}/writing`, label: "Writing" }, { href: `${base}/data-viz`, label: { full: "Data viz", short: "Dataviz" } }] as { href, label }}
       <a
         {href}
         class="relative px-1.5 text-lg text-black transition-colors duration-300 ease-in-out
-                    {page.url.pathname === href ? 'active-link' : 'nav-link'}"
+           {page.url.pathname === href ? 'active-link' : 'nav-link'}"
       >
-        {label}
+        {#if typeof label === "string"}
+          {label}
+        {:else}
+          <span class="hidden sm:inline">{label.full}</span>
+          <span class="inline sm:hidden">{label.short}</span>
+        {/if}
       </a>
     {/each}
   </div>

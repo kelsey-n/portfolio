@@ -75,8 +75,7 @@
       we collaborate beyond our roles!
     </div>
     <iframe
-      width="560"
-      height="315"
+      class="responsive-iframe"
       src="https://www.youtube.com/embed/gRBVR-PI6pw?si=Zy55Tno87LdW148r"
       title="YouTube video player"
       frameborder="0"
@@ -84,6 +83,21 @@
       referrerpolicy="strict-origin-when-cross-origin"
       allowfullscreen
     ></iframe>
+  </div>
+
+  <div style="height: 2.5em"></div>
+  <hr />
+  <div style="height: 2.5em"></div>
+
+  <div class="page-buttons">
+    <a href="/writing" rel="noopener noreferrer">
+      <span class="button-title">→ Writing</span><br />
+      <span class="button-subtitle">Essays, interviews & talks</span>
+    </a>
+    <a href="/data-viz" rel="noopener noreferrer">
+      <span class="button-title">→ Data viz</span><br />
+      <span class="button-subtitle">Visual storytelling, code & design</span>
+    </a>
   </div>
 
   <div style="height: 2.5em"></div>
@@ -125,6 +139,16 @@
 <section class="grid h-screen place-content-center px-[clamp(4rem,12vw,20rem)]"></section> -->
 
 <style>
+  .responsive-iframe {
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    border: 0;
+    display: block;
+    margin: 0 auto;
+  }
+
   .intro-page {
     padding: 2em 6em;
   }
@@ -201,13 +225,24 @@
     box-shadow: 0 4px 4.5px rgba(0, 0, 0, 0.3);
   }
 
+  .page-buttons {
+    font-size: 28px;
+    display: flex;
+    gap: 20px;
+    justify-content: space-around;
+  }
+
+  .button-subtitle {
+    font-size: 20px;
+  }
+
   @media (max-width: 1000px) {
     .intro-container {
       flex-direction: column-reverse;
       gap: 2em;
     }
     .intro-page {
-      padding: 2em;
+      padding: 20px;
     }
   }
 </style>
