@@ -58,7 +58,7 @@
       Hi, I’m Kelsey!<br /><br />
       I’m a data visualization developer and creative storyteller based in New York.<br
       /><br />
-      As a technical collaborator, I help communicate insights from data, enabling
+      As a technical collaborator, I help communicate insights from data and enable
       clients to tell their story in a way that will resonate with their audience.
     </div>
   </div>
@@ -90,13 +90,13 @@
   <div style="height: 2.5em"></div>
 
   <div class="page-buttons">
-    <a href="/writing" rel="noopener noreferrer">
-      <span class="button-title">→ Writing</span><br />
-      <span class="button-subtitle">Essays, interviews & talks</span>
-    </a>
     <a href="/data-viz" rel="noopener noreferrer">
       <span class="button-title">→ Data viz</span><br />
       <span class="button-subtitle">Visual storytelling, code & design</span>
+    </a>
+    <a href="/writing" rel="noopener noreferrer">
+      <span class="button-title">→ Writing</span><br />
+      <span class="button-subtitle">Articles, interviews & talks</span>
     </a>
   </div>
 
@@ -114,15 +114,24 @@
     <a
       href="https://drive.google.com/file/d/1p3Cg1Y4J5n-0DdJ4XWBzdv4OI_2AoXD7/view?usp=sharing"
       target="_blank"
-      rel="noopener noreferrer">Resume</a
+      rel="noopener noreferrer">Resume (typical)</a
     >
+    <div style="height: 20px;"></div>
+    <div>
+      <div>Resume (not so typical):</div>
+      <img
+        src="/images/Personal journey map.png"
+        alt="Career experience shown as path through woods"
+        class="personal-journey-map-img"
+      />
+    </div>
   </div>
 </div>
 
 <!-- <section class="grid h-screen place-content-center px-[clamp(4rem,12vw,20rem)]">
 	<p class="text reveal-type w-full px-4 md:w-1/2">
 		Hi, I'm Kelsey! I'm a data visualization developer and creative storyteller based in New York.
-		As a technical collaborator, I help communicate insights from data, enabling clients to <span
+		As a technical collaborator, I help communicate insights from data and enable clients to <span
 			class="rainbow-word">tell their story in a way that will resonate</span
 		> with their audience.
 	</p>
@@ -218,6 +227,7 @@
   a {
     color: #ff8a0c;
     text-decoration: underline;
+    padding: 0 5px;
     transition: all 0.3s ease;
   }
 
@@ -234,6 +244,11 @@
 
   .button-subtitle {
     font-size: 20px;
+  }
+
+  .personal-journey-map-img {
+    max-width: 800px;
+    width: 100%;
   }
 
   @media (max-width: 1000px) {

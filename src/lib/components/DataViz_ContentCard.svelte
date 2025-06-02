@@ -27,20 +27,15 @@
 </script>
 
 <div class="img-preview-content">
-  <div class="content-title">
-    {data.title} ({data.year})
-  </div>
   <div class="main-content-flex">
-    <div
-      class="image-container-flex-child"
-      style="background-image: url('/images/data-viz-page/{imageFolder}/{data
-        .images[hoveredImageIndex]}')"
-    ></div>
     <div class="content-description-flex-child">
       <div class="flex flex-wrap gap-2.5">
         <!-- {#each data.tags as tag}
           <div class="tag-card {tagClassMap[tag]}">{tag}</div>
         {/each} -->
+      </div>
+      <div class="content-title">
+        {data.title} ({data.year})
       </div>
       <div class="project-description">{data.description}</div>
       <div class="project-meta">
@@ -52,6 +47,7 @@
             <strong>FEATURED: </strong>
             {#each data.featured as link_text, i (link_text)}
               <a
+                class="inline-a"
                 href={data.featured_links[i]}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -64,6 +60,7 @@
             <strong>HONORS:</strong>
             {#each data.honors as link_text, i (link_text)}
               <a
+                class="inline-a"
                 href={data.honors_links[i]}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -97,6 +94,11 @@
         {data.image_descriptions[hoveredImageIndex]}
       </div>
     </div>
+    <div
+      class="image-container-flex-child"
+      style="background-image: url('/images/data-viz-page/{imageFolder}/{data
+        .images[hoveredImageIndex]}')"
+    ></div>
   </div>
 </div>
 
@@ -184,7 +186,12 @@
   a {
     color: #ff8a0c;
     text-decoration: underline;
+    padding: 0 5px;
     transition: all 0.3s ease;
+  }
+
+  .inline-a {
+    padding: 0;
   }
 
   a:hover {

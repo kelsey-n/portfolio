@@ -155,6 +155,8 @@
 
   .quote-text-content {
     background-color: rgb(255, 255, 255, 1);
+    color: #ff8a0c;
+    padding: 5px;
   }
 
   /* .quote-text-content {
@@ -195,6 +197,7 @@
 
   .article-item {
     color: #9ca3af;
+    padding: 0 5px;
     /* transition: color 0.4s ease; */
     transition: all 0.3s ease;
   }
