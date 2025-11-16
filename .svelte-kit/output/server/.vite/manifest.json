@@ -116,7 +116,7 @@
       "_index.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.DqCBA5Gk.css"
+      "_app/immutable/assets/_page.B-Exy1Zz.css"
     ]
   },
   "src/routes/about/+page.svelte": {
@@ -148,7 +148,7 @@
       "_attributes.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.CYh1ix1c.css"
+      "_app/immutable/assets/_page.C9z_JF5d.css"
     ]
   },
   "src/routes/writing/+page.js": {

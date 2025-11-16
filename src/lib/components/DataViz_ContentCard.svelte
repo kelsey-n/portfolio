@@ -214,7 +214,7 @@
 
   @media (max-width: 1000px) {
     .main-content-flex {
-      flex-direction: column-reverse;
+      flex-direction: column;
       height: 120vh;
       /* height: auto; */
       gap: 5px;

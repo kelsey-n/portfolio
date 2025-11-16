@@ -7,11 +7,11 @@ function _layout($$payload, $$props) {
   push();
   let { children } = $$props;
   const each_array = ensure_array_like([
-    { href: `${base}/writing`, label: "Writing" },
     {
       href: `${base}/data-viz`,
       label: { full: "Data viz", short: "Dataviz" }
-    }
+    },
+    { href: `${base}/writing`, label: "Writing" }
   ]);
   $$payload.out += `<nav class="bg-navigation flex items-center justify-between p-4 bg-white border-b-2 border-b-[var(--color-pink)]"><a href="/"${attr("class", `relative px-2.5 text-lg text-black transition-colors duration-300 ease-in-out ${stringify(page.url.pathname === "/" ? "active-link" : "nav-link")} svelte-2uoxzk`)}><span class="hidden sm:inline">KELSEY NANAN</span> <span class="inline sm:hidden">KN</span></a> <div class="flex space-x-5"><!--[-->`;
   for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {

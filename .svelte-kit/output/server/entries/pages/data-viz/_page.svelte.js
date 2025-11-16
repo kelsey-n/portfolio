@@ -6,7 +6,7 @@ function DataViz_ContentCard($$payload, $$props) {
   let { data, imageFolder } = $$props;
   let hoveredImageIndex = 0;
   const each_array_2 = ensure_array_like(data.images);
-  $$payload.out += `<div class="img-preview-content"><div class="main-content-flex svelte-1tw2um4"><div class="content-description-flex-child svelte-1tw2um4"><div class="flex flex-wrap gap-2.5"></div> <div class="content-title svelte-1tw2um4">${escape_html(data.title)} (${escape_html(data.year)})</div> <div class="project-description svelte-1tw2um4">${escape_html(data.description)}</div> <div class="project-meta svelte-1tw2um4">`;
+  $$payload.out += `<div class="img-preview-content"><div class="main-content-flex svelte-i6e62b"><div class="content-description-flex-child svelte-i6e62b"><div class="flex flex-wrap gap-2.5"></div> <div class="content-title svelte-i6e62b">${escape_html(data.title)} (${escape_html(data.year)})</div> <div class="project-description svelte-i6e62b">${escape_html(data.description)}</div> <div class="project-meta svelte-i6e62b">`;
   if (data.client) {
     $$payload.out += "<!--[-->";
     $$payload.out += `<div><strong>CLIENT:</strong> ${escape_html(data.client)}</div>`;
@@ -20,7 +20,7 @@ function DataViz_ContentCard($$payload, $$props) {
     $$payload.out += `<div><strong>FEATURED:</strong> <!--[-->`;
     for (let i = 0, $$length = each_array.length; i < $$length; i++) {
       let link_text = each_array[i];
-      $$payload.out += `<a class="inline-a svelte-1tw2um4"${attr("href", data.featured_links[i])} target="_blank" rel="noopener noreferrer">${escape_html(link_text)}</a>${escape_html(i < data.featured.length - 1 ? ", " : "")}`;
+      $$payload.out += `<a class="inline-a svelte-i6e62b"${attr("href", data.featured_links[i])} target="_blank" rel="noopener noreferrer">${escape_html(link_text)}</a>${escape_html(i < data.featured.length - 1 ? ", " : "")}`;
     }
     $$payload.out += `<!--]--></div>`;
   } else {
@@ -33,18 +33,18 @@ function DataViz_ContentCard($$payload, $$props) {
     $$payload.out += `<div><strong>HONORS:</strong> <!--[-->`;
     for (let i = 0, $$length = each_array_1.length; i < $$length; i++) {
       let link_text = each_array_1[i];
-      $$payload.out += `<a class="inline-a svelte-1tw2um4"${attr("href", data.honors_links[i])} target="_blank" rel="noopener noreferrer">${escape_html(link_text)}</a>${escape_html(i < data.featured.length - 1 ? ", " : "")}`;
+      $$payload.out += `<a class="inline-a svelte-i6e62b"${attr("href", data.honors_links[i])} target="_blank" rel="noopener noreferrer">${escape_html(link_text)}</a>${escape_html(i < data.featured.length - 1 ? ", " : "")}`;
     }
     $$payload.out += `<!--]--></div>`;
   } else {
     $$payload.out += "<!--[!-->";
   }
-  $$payload.out += `<!--]--></div> <div class="mini-image-gallery-flex svelte-1tw2um4"><!--[-->`;
+  $$payload.out += `<!--]--></div> <div class="mini-image-gallery-flex svelte-i6e62b"><!--[-->`;
   for (let i = 0, $$length = each_array_2.length; i < $$length; i++) {
     let image = each_array_2[i];
-    $$payload.out += `<img${attr("src", `/images/data-viz-page/${stringify(imageFolder)}/${stringify(image)}`)} alt="mini carousel"${attr("class", `svelte-1tw2um4 ${stringify([hoveredImageIndex === i ? "active" : ""].filter(Boolean).join(" "))}`)}>`;
+    $$payload.out += `<img${attr("src", `/images/data-viz-page/${stringify(imageFolder)}/${stringify(image)}`)} alt="mini carousel"${attr("class", `svelte-i6e62b ${stringify([hoveredImageIndex === i ? "active" : ""].filter(Boolean).join(" "))}`)}>`;
   }
-  $$payload.out += `<!--]--></div> <button><a class="view-project svelte-1tw2um4"${attr("href", data.content_link)} target="_blank" rel="noopener noreferrer">View project</a></button> <div class="image-description svelte-1tw2um4">${escape_html(data.image_descriptions[hoveredImageIndex])}</div></div> <div class="image-container-flex-child svelte-1tw2um4"${attr("style", `background-image: url('/images/data-viz-page/${stringify(imageFolder)}/${stringify(data.images[hoveredImageIndex])}')`)}></div></div></div>`;
+  $$payload.out += `<!--]--></div> <button><a class="view-project svelte-i6e62b"${attr("href", data.content_link)} target="_blank" rel="noopener noreferrer">View project</a></button> <div class="image-description svelte-i6e62b">${escape_html(data.image_descriptions[hoveredImageIndex])}</div></div> <div class="image-container-flex-child svelte-i6e62b"${attr("style", `background-image: url('/images/data-viz-page/${stringify(imageFolder)}/${stringify(data.images[hoveredImageIndex])}')`)}></div></div></div>`;
   pop();
 }
 function DataViz_HScrollContainer($$payload, $$props) {
