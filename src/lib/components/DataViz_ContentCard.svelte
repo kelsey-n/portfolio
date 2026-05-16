@@ -285,9 +285,10 @@
     }
     .image-container-flex-child {
       width: 100%;
+      align-items: flex-start;
     }
     .main-preview-img {
-      width: 100%;
+      max-width: 100%;
       max-height: 50vh;
     }
   }
