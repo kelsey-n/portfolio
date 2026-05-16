@@ -53,13 +53,14 @@
 
 <div class="intro-page">
   <div class="intro-container">
-    <img src="/images/flower headshot 1.png" />
-    <div>
-      Hi, I’m Kelsey!<br /><br />
-      I’m a data visualization developer and creative storyteller based in New York.<br
-      /><br />
-      As a technical collaborator, I help communicate insights from data and enable
-      clients to tell their story in a way that will resonate with their audience.
+    <img src="/images/flower headshot 1.webp" alt="Kelsey Nanan headshot" />
+    <div class="intro-text">
+      <p>
+        I design and code data visualizations that help people see their story
+        clearly. My clients have included Anthropic and the Olympic Broadcasting
+        Services. I’m also the author of <em>Creativity through Flexibility</em>
+        and teach data visualization at the School of Visual Arts.
+      </p>
     </div>
   </div>
 
@@ -67,7 +68,7 @@
   <hr />
   <div style="height: 2.5em"></div>
 
-  <div class="video-container">
+  <!-- <div class="video-container">
     <div class="video-description">
       How do you tell the right story in the best way?
       <br /> Check out my presentation at Observable's 2024 Insight Conference where
@@ -83,6 +84,30 @@
       referrerpolicy="strict-origin-when-cross-origin"
       allowfullscreen
     ></iframe>
+  </div> -->
+
+  <div class="book-section">
+    <img
+      src="/images/Book cover - with stars for site.webp"
+      alt="Book cover for Creativity through Flexibility"
+      class="book-cover"
+    />
+    <div class="book-details">
+      <div class="book-title">Creativity through Flexibility</div>
+      <p class="book-description">
+        A collection of 30 data visualizations from the #30DayChartChallenge —
+        exploring creativity in data storytelling across chart types, themes,
+        and design styles.
+      </p>
+      <!-- <div class="book-price">$XX.XX</div> -->
+      <!-- <a
+        href="https://www.blurb.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="book-btn">Purchase on Blurb →</a
+      > -->
+      <div class="book-coming-soon">Purchase link coming soon</div>
+    </div>
   </div>
 
   <div style="height: 2.5em"></div>
@@ -120,7 +145,7 @@
     <div>
       <div>Resume (not so typical):</div>
       <img
-        src="/images/Personal journey map.png"
+        src="/images/Personal journey map.webp"
         alt="Career experience shown as path through woods"
         class="personal-journey-map-img"
       />
@@ -148,7 +173,7 @@
 <section class="grid h-screen place-content-center px-[clamp(4rem,12vw,20rem)]"></section> -->
 
 <style>
-  .responsive-iframe {
+  /* .responsive-iframe {
     width: 100%;
     max-width: 800px;
     aspect-ratio: 16 / 9;
@@ -156,26 +181,67 @@
     border: 0;
     display: block;
     margin: 0 auto;
+  } */
+
+  .book-section {
+    display: flex;
+    flex-direction: row;
+    gap: 2.5em;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .book-cover {
+    max-height: 320px;
+    width: auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .book-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75em;
+    max-width: 420px;
+  }
+
+  .book-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+
+  .book-description {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    font-style: italic;
+    margin: 0;
+  }
+
+  .book-coming-soon {
+    font-size: 1.05rem;
+    color: #999;
+    font-style: italic;
   }
 
   .intro-page {
-    padding: 2em 6em;
+    padding: 1.25em 6em;
   }
 
   .intro-container {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    gap: 5em;
-    font-size: 25px;
+    gap: 3em;
+    font-size: 20px;
     align-items: center;
   }
 
   .intro-container img {
-    flex-grow: 4;
+    max-height: 160px;
+    width: auto;
+    flex-shrink: 0;
   }
 
-  .video-container {
+  /* .video-container {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -186,6 +252,16 @@
   .video-description {
     max-width: 500px;
     font-style: italic;
+  } */
+
+  .intro-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55em;
+  }
+
+  .intro-text p {
+    margin: 0;
   }
 
   .contact-info {
@@ -258,6 +334,13 @@
     }
     .intro-page {
       padding: 20px;
+    }
+    .book-section {
+      flex-direction: column;
+      align-items: center;
+    }
+    .book-cover {
+      max-height: 260px;
     }
   }
 </style>

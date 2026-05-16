@@ -15,7 +15,7 @@
 
   let highlightedArticleIndex = defaultArticleIndex;
   let highlightedQuote = defaultQuote;
-  let highlightedArticleImage = `/images/writing-page/header-${highlightedArticleIndex}.png`;
+  let highlightedArticleImage = `/images/writing-page/header-${highlightedArticleIndex}.webp`;
 
   // Function to update quote
   function updateQuote(article) {
@@ -23,7 +23,7 @@
 
     highlightedQuote = article[`quote${randomQuoteIndex}`];
     highlightedArticleIndex = article.index;
-    highlightedArticleImage = `/images/writing-page/header-${highlightedArticleIndex}.png`;
+    highlightedArticleImage = `/images/writing-page/header-${highlightedArticleIndex}.webp`;
 
     const hoveredArticle = document.getElementById(`article-${article.index}`);
   }
@@ -53,7 +53,7 @@
             d="M28.6 0.499994L30 2.4C27.9333 3.93333 26.3333 5.76667 25.2 7.9C24.0667 9.96666 23.5 12.2333 23.5 14.7H23.7C25.3 14.7 26.6333 15.2667 27.7 16.4C28.8333 17.4667 29.4 18.8 29.4 20.4C29.4 21.9333 28.8333 23.3 27.7 24.5C26.6333 25.6333 25.3 26.2 23.7 26.2C22.0333 26.2 20.6667 25.6667 19.6 24.6C18.6 23.4667 18 22 17.8 20.2C17.6667 18.2 17.9 15.9667 18.5 13.5C19.1667 11.0333 20.3 8.63333 21.9 6.3C23.5667 3.96666 25.8 2.03333 28.6 0.499994ZM11.4 0.499994L12.8 2.4C10.7333 3.93333 9.13333 5.76667 8 7.9C6.86667 9.96666 6.3 12.2333 6.3 14.7H6.5C8.1 14.7 9.43333 15.2667 10.5 16.4C11.6333 17.4667 12.2 18.8 12.2 20.4C12.2 21.9333 11.6333 23.3 10.5 24.5C9.43333 25.6333 8.1 26.2 6.5 26.2C4.83333 26.2 3.46667 25.6667 2.4 24.6C1.4 23.4667 0.8 22 0.6 20.2C0.466667 18.2 0.7 15.9667 1.3 13.5C1.96667 11.0333 3.1 8.63333 4.7 6.3C6.36667 3.96666 8.6 2.03333 11.4 0.499994Z"
           />
         </svg> -->
-        <span class="quote-text-content">“{highlightedQuote}”</span>
+        <span class="quote-text-content">"{highlightedQuote}"</span>
       </p>
     </div>
   {/key}
@@ -164,48 +164,43 @@
   } */
 
   .section-title {
-    border-bottom: 1px solid #4b5563;
-    padding-bottom: 0.5rem;
+    /* border-bottom: 1.5px solid var(--color-pink); */
+    /* padding-bottom: 0.5rem; */
     font-size: 1.5rem;
     font-weight: bold;
     margin-top: 2rem;
   }
 
+  /* ── table styles ── */
+
   .article-list {
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     list-style: none;
     padding: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.16);
   }
 
   .article-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
-    color: #9ca3af; /* text-gray-400 */
+    color: #8b9099;
     cursor: pointer;
-  }
-
-  /* .all-work-article {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  } */
-
-  .article-item {
-    color: #9ca3af;
-    padding: 0 5px;
-    /* transition: color 0.4s ease; */
-    transition: all 0.3s ease;
+    padding: 0.6rem 8px 0.6rem 5px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+    border-left: 3px solid transparent;
+    transition: all 0.25s ease;
   }
 
   .article-item-hovered {
     color: #ff8a0c;
     text-decoration: underline;
-    box-shadow: 0 4px 4.5px rgba(0, 0, 0, 0.3);
+    background-color: rgba(255, 138, 12, 0.07);
+    border-left: 3px solid #ff8a0c;
+  }
+
+  .article-list li:nth-child(even).article-item-hovered {
+    background-color: rgba(255, 138, 12, 0.07);
   }
 
   /* .article-item:hover {

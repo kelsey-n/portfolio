@@ -47,7 +47,7 @@
 </script>
 
 <nav
-  class="bg-navigation flex items-center justify-between p-4 bg-white border-b-2 border-b-[var(--color-pink)]"
+  class="bg-navigation flex items-center justify-between p-4 bg-white border-b-2 border-b-[var(--color-pink)] sticky top-0"
 >
   <a
     href="/"

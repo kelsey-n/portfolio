@@ -3,12 +3,25 @@
   let { data, imageFolder } = $props();
 
   let hoveredImageIndex = $state(0);
+  // Tracks which gif filenames failed to load as video (webm/mp4 not yet generated)
+  let gifVideoFailed = $state({});
 
-  // $effect: currentImage = data.images[hoveredImageIndex] ?? data.images[0]
+  function isGif(filename) {
+    return filename?.toLowerCase().endsWith(".gif");
+  }
 
-  // const currentImage = $derived(
-  //   () => data.images?.[hoveredImageIndex] ?? data.images?.[0]
-  // );
+  function toWebp(filename) {
+    return filename?.replace(/\.(png|jpg|jpeg)$/i, ".webp");
+  }
+
+  function imgSrc(filename) {
+    const name = isGif(filename) ? filename : toWebp(filename);
+    return `/images/data-viz-page/${imageFolder}/${name}`;
+  }
+
+  function gifVideoSrc(filename, ext) {
+    return imgSrc(filename.replace(/\.gif$/i, `.${ext}`));
+  }
 
   $effect(() => {
     if (hoveredImageIndex >= data.images?.length) {
@@ -19,11 +32,6 @@
   function updateHoveredImageIndex(i) {
     hoveredImageIndex = i;
   }
-
-  function getRandomValue(min = -3, max = 3.1) {
-    return Math.random() * (max - min) + min;
-  }
-  // style="transform: rotate({getRandomValue()}deg)"
 </script>
 
 <div class="img-preview-content">
@@ -71,13 +79,32 @@
           </div>{/if}
       </div>
       <div class="mini-image-gallery-flex">
-        {#each data.images as image, i}
-          <img
-            src="/images/data-viz-page/{imageFolder}/{image}"
-            alt="mini carousel"
-            onmouseenter={() => updateHoveredImageIndex(i)}
-            class:active={hoveredImageIndex === i}
-          />
+        {#each data.images as image, i (imageFolder + '/' + image)}
+          {#if isGif(image) && !gifVideoFailed[image]}
+            <video
+              autoplay
+              loop
+              muted
+              playsinline
+              onmouseenter={() => updateHoveredImageIndex(i)}
+              class:active={hoveredImageIndex === i}
+            >
+              <source
+                src={gifVideoSrc(image, "webm")}
+                type="video/webm"
+                onerror={() => { gifVideoFailed[image] = true; }}
+              />
+              <source src={gifVideoSrc(image, "mp4")} type="video/mp4" />
+            </video>
+          {:else}
+            <img
+              src={imgSrc(image)}
+              alt="mini carousel"
+              loading="lazy"
+              onmouseenter={() => updateHoveredImageIndex(i)}
+              class:active={hoveredImageIndex === i}
+            />
+          {/if}
         {/each}
       </div>
       <button>
@@ -94,11 +121,27 @@
         {data.image_descriptions[hoveredImageIndex]}
       </div>
     </div>
-    <div
-      class="image-container-flex-child"
-      style="background-image: url('/images/data-viz-page/{imageFolder}/{data
-        .images[hoveredImageIndex]}')"
-    ></div>
+    <div class="image-container-flex-child">
+      {#key data.images[hoveredImageIndex]}
+      {#if isGif(data.images[hoveredImageIndex]) && !gifVideoFailed[data.images[hoveredImageIndex]]}
+        <video class="main-preview-img" autoplay loop muted playsinline>
+          <source
+            src={gifVideoSrc(data.images[hoveredImageIndex], "webm")}
+            type="video/webm"
+            onerror={() => { gifVideoFailed[data.images[hoveredImageIndex]] = true; }}
+          />
+          <source src={gifVideoSrc(data.images[hoveredImageIndex], "mp4")} type="video/mp4" />
+        </video>
+      {:else}
+        <img
+          class="main-preview-img"
+          src={imgSrc(data.images[hoveredImageIndex])}
+          alt={data.image_alts?.[hoveredImageIndex] ?? ""}
+          loading="lazy"
+        />
+      {/if}
+      {/key}
+    </div>
   </div>
 </div>
 
@@ -115,16 +158,25 @@
     display: flex;
     height: calc(100vh - 140px - 62px - 61px);
     gap: 25px;
-    margin: 0 8em;
+    margin: 0 3em;
     /* align-items: flex-start; */
   }
 
   .image-container-flex-child {
     flex: 1;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
     transition: all 0.1s ease-in-out;
+  }
+
+  .main-preview-img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    border: 2px solid black;
+    border-radius: 3px;
   }
 
   .content-description-flex-child {
@@ -143,18 +195,21 @@
     flex-wrap: wrap;
   }
 
-  .mini-image-gallery-flex img {
+  .mini-image-gallery-flex img,
+  .mini-image-gallery-flex video {
     height: 10vh;
     min-height: 70px;
     border-radius: 3px;
     cursor: pointer;
     transition: opacity 0.2s ease;
+    border: 1.5px solid rgba(0, 0, 0, 0.25);
+    object-fit: cover;
   }
 
-  .mini-image-gallery-flex img.active {
+  .mini-image-gallery-flex img.active,
+  .mini-image-gallery-flex video.active {
     opacity: 0.5;
-    border: 1px solid black;
-    /* box-shadow: inset 5px #f00; */
+    border: 2.5px solid black;
   }
 
   .project-meta {
@@ -230,6 +285,10 @@
     }
     .image-container-flex-child {
       width: 100%;
+    }
+    .main-preview-img {
+      width: 100%;
+      max-height: 50vh;
     }
   }
 </style>

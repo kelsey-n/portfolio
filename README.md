@@ -38,3 +38,8 @@ You can preview the production build with `npm run preview`.
 > To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
 
 TO DEPLOY: npm run build, then upload build folder to Cloudflare
+
+NEW: to create webp and webm from pngs and gifs: run shell commands: `brew install webp` `find static/images \( -name "*.webm" -o -name "*.mp4" -o -name "*.webp" \) -empty -delete` `bash scripts/convert-images.sh`
+
+To generate a new webp for a specific new image:
+`cwebp -q 85 "static/images/Personal journey map.png" -o "static/images/Personal journey map.webp"`
