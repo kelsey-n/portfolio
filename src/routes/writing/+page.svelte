@@ -34,243 +34,241 @@
 </script>
 
 <div class="container-all">
-  {#key highlightedQuote}
-    <div
-      class="quote-container"
-      style="background-image: url('{highlightedArticleImage}')"
-    >
-      <p class="quote-text" id="highlighted-quote" in:fade>
-        <!-- <svg
-          class="quote-icon"
-          xmlns="http://www.w3.org/2000/svg"
-          width="30"
-          height="27"
-          viewBox="0 0 30 27"
-          fill="none"
-        >
-          <path
-            fill="white"
-            d="M28.6 0.499994L30 2.4C27.9333 3.93333 26.3333 5.76667 25.2 7.9C24.0667 9.96666 23.5 12.2333 23.5 14.7H23.7C25.3 14.7 26.6333 15.2667 27.7 16.4C28.8333 17.4667 29.4 18.8 29.4 20.4C29.4 21.9333 28.8333 23.3 27.7 24.5C26.6333 25.6333 25.3 26.2 23.7 26.2C22.0333 26.2 20.6667 25.6667 19.6 24.6C18.6 23.4667 18 22 17.8 20.2C17.6667 18.2 17.9 15.9667 18.5 13.5C19.1667 11.0333 20.3 8.63333 21.9 6.3C23.5667 3.96666 25.8 2.03333 28.6 0.499994ZM11.4 0.499994L12.8 2.4C10.7333 3.93333 9.13333 5.76667 8 7.9C6.86667 9.96666 6.3 12.2333 6.3 14.7H6.5C8.1 14.7 9.43333 15.2667 10.5 16.4C11.6333 17.4667 12.2 18.8 12.2 20.4C12.2 21.9333 11.6333 23.3 10.5 24.5C9.43333 25.6333 8.1 26.2 6.5 26.2C4.83333 26.2 3.46667 25.6667 2.4 24.6C1.4 23.4667 0.8 22 0.6 20.2C0.466667 18.2 0.7 15.9667 1.3 13.5C1.96667 11.0333 3.1 8.63333 4.7 6.3C6.36667 3.96666 8.6 2.03333 11.4 0.499994Z"
-          />
-        </svg> -->
-        <span class="quote-text-content">"{highlightedQuote}"</span>
-      </p>
-    </div>
-  {/key}
+  <div class="lists">
+    <h2 class="section-title">Highlighted work</h2>
 
-  <h2 class="section-title">Highlighted work</h2>
-
-  <ul class="article-list">
-    {#each articles as article}
-      {#if article.highlighted === "Y"}
+    <ul class="article-list">
+      {#each articles as article}
+        {#if article.highlighted === "Y"}
         <li
-          role="listitem"
-          class="highlighted-article article-item"
-          class:article-item-hovered={article.index === highlightedArticleIndex}
+          class="article-item"
+          class:is-current={article.index === highlightedArticleIndex}
           id="article-{article.index}"
           on:mouseenter={() => updateQuote(article)}
-          on:click={() => window.open(article.href, "_blank")}
           transition:fade
         >
-          <span>
-            <a href="#" class="article-title">{article.articleName}</a>
-            <small class="article-subtitle">{article.publishedIn}</small>
-          </span>
-          <span class="article-year">{article.year}</span>
+          <a
+            href={article.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            on:focus={() => updateQuote(article)}
+          >
+            <span>
+              <span class="article-title"><span class="kn-mark">{article.articleName}</span></span>
+              <small class="article-subtitle">{article.publishedIn}</small>
+            </span>
+            <span class="article-year kn-figure">{article.year}</span>
+          </a>
         </li>
-      {/if}
-    {/each}
-  </ul>
+        {/if}
+      {/each}
+    </ul>
 
-  <h2 class="section-title">All work</h2>
+    <h2 class="section-title">All work</h2>
 
-  <ul class="article-list">
-    {#each articles as article}
-      {#if article.highlighted === "N"}
+    <ul class="article-list">
+      {#each articles as article}
+        {#if article.highlighted === "N"}
         <li
-          role="listitem"
-          class="all-work-article article-item"
-          class:article-item-hovered={article.index === highlightedArticleIndex}
+          class="article-item"
+          class:is-current={article.index === highlightedArticleIndex}
+          id="article-{article.index}"
           on:mouseenter={() => updateQuote(article)}
-          on:click={() => window.open(article.href, "_blank")}
           transition:fade
         >
-          <span>
-            <a href="#" class="article-title">{article.articleName}</a>
-            <small class="article-subtitle">{article.publishedIn}</small>
-          </span>
-          <span class="article-year">{article.year}</span>
+          <a
+            href={article.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            on:focus={() => updateQuote(article)}
+          >
+            <span>
+              <span class="article-title"><span class="kn-mark">{article.articleName}</span></span>
+              <small class="article-subtitle">{article.publishedIn}</small>
+            </span>
+            <span class="article-year kn-figure">{article.year}</span>
+          </a>
         </li>
-      {/if}
-    {/each}
-  </ul>
+        {/if}
+      {/each}
+    </ul>
+  </div>
+
+  <aside class="quote-column">
+    {#key highlightedQuote}
+      <figure class="quote-container" in:fade={{ duration: 200 }}>
+        <img class="quote-spine" src={highlightedArticleImage} alt="" />
+        <blockquote class="quote-text" id="highlighted-quote">
+          <span class="quote-glyph" aria-hidden="true">“</span>
+          <p><span class="quote-text-content">{highlightedQuote}”</span></p>
+        </blockquote>
+      </figure>
+    {/key}
+  </aside>
 </div>
 
 <style>
   .container-all {
-    padding: 1.5rem;
-    color: #414141;
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: var(--space-7) var(--space-6) var(--space-8);
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: var(--space-7);
+    align-items: start;
+  }
+
+  /* ── the marked-up clipping ── */
+
+  .quote-column {
+    position: sticky;
+    top: calc(var(--header-h, 70px) + var(--space-6));
   }
 
   .quote-container {
-    /* position: relative; */
-    position: sticky;
-    top: 5px;
-    margin-left: auto;
-    margin-right: auto;
-    /* height: 6rem; */
-    height: 150px;
-    width: 100%;
-    overflow: hidden;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    opacity: 0.8;
-    border-radius: 5px;
-    box-shadow: 0 4px 4.5px rgba(0, 0, 0, 0.3);
+    margin: 0;
+    display: grid;
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: var(--space-5);
+    min-height: 320px;
   }
 
-  @media (min-width: 768px) {
-    .quote-container {
-      width: 50%;
-    }
+  .quote-spine {
+    width: 88px;
+    height: 100%;
+    min-height: 320px;
+    object-fit: cover;
+    display: block;
   }
 
   .quote-text {
-    width: 100%;
-    overflow: hidden;
-    color: black;
-    /* font-family: "Courier New", Courier, monospace; */
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 22px;
+    position: relative;
+    margin: 0;
+    padding: var(--space-6) 0 0 0;
+    border-top: var(--horizon) solid var(--ink);
+  }
+
+  .quote-glyph {
+    position: absolute;
+    top: 6px;
+    left: -6px;
+    font-family: var(--font-display);
+    font-size: 120px;
+    line-height: 1;
+    color: var(--sunset-pink);
+    pointer-events: none;
+  }
+
+  .quote-text p {
+    position: relative;
+    margin: 0;
+    padding-top: var(--space-6);
+    font-family: var(--font-text);
     font-style: italic;
-    font-weight: 900;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
-    padding: 0.3rem;
-    text-align: center;
+    font-size: clamp(26px, 2.6vw, 36px);
+    line-height: 1.35;
+    color: var(--ink);
   }
 
+  /* each line gets marked, left to right, when a new quote arrives */
   .quote-text-content {
-    background-color: rgb(255, 255, 255, 1);
-    color: #ff8a0c;
-    padding: 5px;
+    background: linear-gradient(var(--highlighter), var(--highlighter)) no-repeat 0 90% / 0% 0.55em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    animation: mark-in 700ms 150ms ease-out forwards;
   }
 
-  /* .quote-text-content {
-    padding-left: 2rem;
-  } */
+  @keyframes mark-in {
+    to {
+      background-size: 100% 0.55em;
+    }
+  }
+
+  /* ── lists ── */
 
   .section-title {
-    /* border-bottom: 1.5px solid var(--color-pink); */
-    /* padding-bottom: 0.5rem; */
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-top: 2rem;
+    margin: 0 0 var(--space-3);
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 38px;
+    line-height: 44px;
   }
 
-  /* ── table styles ── */
+  .section-title + .article-list {
+    margin-bottom: var(--space-7);
+  }
 
   .article-list {
-    margin-top: 0.5rem;
     list-style: none;
+    margin: 0;
     padding: 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.16);
+    border-top: 1px solid var(--rule-strong);
   }
 
   .article-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #8b9099;
-    cursor: pointer;
-    padding: 0.6rem 8px 0.6rem 5px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.16);
-    border-left: 3px solid transparent;
-    transition: all 0.25s ease;
+    border-bottom: 1px solid var(--rule);
   }
 
-  .article-item-hovered {
-    color: #ff8a0c;
-    text-decoration: underline;
-    background-color: rgba(255, 138, 12, 0.07);
-    border-left: 3px solid #ff8a0c;
-  }
-
-  .article-list li:nth-child(even).article-item-hovered {
-    background-color: rgba(255, 138, 12, 0.07);
-  }
-
-  /* .article-item:hover {
-    color: black;
-  } */
-
-  .article-title {
-    font-size: 1.125rem;
-    font-weight: 600;
-  }
-
-  /* .link {
-    color: #9ca3af;
+  .article-item a {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-5);
+    align-items: baseline;
+    padding: var(--space-3) 0;
+    color: inherit;
     text-decoration: none;
   }
 
-  .link:hover {
-    text-decoration: underline;
-  } */
+  .article-title {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 22px;
+    line-height: 30px;
+    color: var(--ink);
+  }
+
+  .article-item.is-current .kn-mark {
+    background-size: 100% 0.6em;
+  }
 
   .article-subtitle {
     display: block;
-    font-size: 0.875rem;
+    margin-top: var(--space-1);
+    font-size: 15px;
+    line-height: 23px;
+    font-style: italic;
+    color: var(--ink-muted);
   }
 
-  /* Apply the gradient text effect */
-  .gradient-text {
-    background: var(--color-rainbow-gradient);
-    background-clip: text;
-    background-size: 300%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    /* transition: 0.5s ease-in-out; */
-    /* animation: animate 0.5s ease-in-out; */
-    /* position: relative; */
+  .article-year {
+    font-size: 13px;
+    color: var(--ink-muted);
+    white-space: nowrap;
   }
 
-  .quote-icon {
-    position: absolute;
+  .article-item.is-current .article-year {
+    color: var(--ink);
   }
 
-  /* .hovered-gradient {
-		background: linear-gradient(90deg, #ddd, #aaa);
-		background-clip: text;
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		transition: background-position 0.5s ease-in-out;
-	} */
-  .hovered-gradient:hover {
-    background: var(--color-rainbow-gradient);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: all 0.5s ease-in-out;
-  }
-
-  @keyframes animate {
-    0% {
-      background-position: 0 50%;
+  @media (max-width: 1000px) {
+    .container-all {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+      padding: var(--space-6) var(--space-4) var(--space-7);
     }
-    50% {
-      background-position: 100% 50%;
+    .quote-column {
+      position: static;
+      order: -1;
     }
-    100% {
-      background-position: 0 50%;
+    .quote-container,
+    .quote-spine {
+      min-height: 200px;
     }
-  }
-
-  .hover-container {
-    position: relative;
-    cursor: pointer;
+    .quote-container {
+      grid-template-columns: 64px minmax(0, 1fr);
+    }
+    .quote-spine {
+      width: 64px;
+    }
   }
 </style>

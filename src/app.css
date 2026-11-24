@@ -19,11 +19,93 @@
   font-style: normal;
 }
 
+/* ---------- design tokens (Kelsey Nanan design system) ---------- */
+:root,
+[data-theme="paper"] {
+  --paper: #f5f1e8;
+  --paper-sunk: #ece6d9;
+  --ink: #021a2b;
+  --ink-muted: #4f5d68;
+  --rule: #021a2b2e;
+  --rule-strong: #021a2b;
+  --link: #b0136b;
+  --ember: #a8480a;
+  --highlighter: #fbe7a1;
+  --sunset-pink: #ff3caa;
+  --sunset-orange: #ff8a0c;
+  --sunset-yellow: #ffe83f;
+  --shadow-object: 0 1px 2px rgba(2, 26, 43, 0.14), 0 18px 32px -12px rgba(2, 26, 43, 0.35);
+}
+[data-theme="cover"] {
+  --paper: #1b1b1b;
+  --paper-sunk: #252523;
+  --ink: #f3ead6;
+  --ink-muted: #a9a395;
+  --rule: #f3ead62e;
+  --rule-strong: #f3ead6;
+  --link: #ff6fbe;
+  --ember: #ffb057;
+  --highlighter: #4a3d12;
+  --shadow-object: 0 1px 2px rgba(0, 0, 0, 0.5), 0 18px 32px -12px rgba(0, 0, 0, 0.8);
+}
+:root {
+  --font-display: "Marcellus", Georgia, serif;
+  --font-text: "Source Serif 4", Georgia, serif;
+  --font-data: "IBM Plex Mono", ui-monospace, monospace;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 40px;
+  --space-7: 64px;
+  --space-8: 112px;
+  --page-max: 1240px;
+  --measure: 36rem;
+  --horizon: 3px;
+  --sunset: linear-gradient(60deg, var(--sunset-pink), var(--sunset-orange) 50%, var(--sunset-yellow));
+}
+
 html,
 body {
-  color: #021a2b;
-  background-color: #f2f2f2;
-  font-family: "Marcellus", sans-serif;
+  color: var(--ink);
+  background-color: var(--paper);
+  font-family: var(--font-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 3px;
+}
+
+.kn-figure {
+  font-family: var(--font-data);
+  font-variant-numeric: tabular-nums;
+}
+
+.kn-link {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  background: linear-gradient(var(--highlighter), var(--highlighter)) no-repeat 0 85% / 0% 0.55em;
+  transition: background-size 200ms ease-out, color 200ms ease-out;
+}
+.kn-link:hover {
+  color: var(--ink);
+  background-size: 100% 0.55em;
+}
+
+.kn-mark {
+  background: linear-gradient(var(--highlighter), var(--highlighter)) no-repeat 0 88% / 0% 0.6em;
+  transition: background-size 220ms ease-out;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
 }
 
 @theme {

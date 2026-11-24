@@ -1,4 +1,5 @@
 <script>
+  import Hero from "$lib/components/Hero.svelte";
   import gsap from "gsap";
   import SplitType from "split-type";
   import { onMount } from "svelte";
@@ -51,6 +52,8 @@
 
 <!-- <h1 class="flex justify-center text-2xl">🛠️🚧</h1> -->
 
+<Hero />
+
 <div class="intro-page">
   <div class="intro-container">
     <img src="/images/flower headshot 1.webp" alt="Kelsey Nanan headshot" />
@@ -64,27 +67,7 @@
     </div>
   </div>
 
-  <div style="height: 2.5em"></div>
   <hr />
-  <div style="height: 2.5em"></div>
-
-  <!-- <div class="video-container">
-    <div class="video-description">
-      How do you tell the right story in the best way?
-      <br /> Check out my presentation at Observable's 2024 Insight Conference where
-      I go behind the scenes of a few projects to show how the magic happens when
-      we collaborate beyond our roles!
-    </div>
-    <iframe
-      class="responsive-iframe"
-      src="https://www.youtube.com/embed/gRBVR-PI6pw?si=Zy55Tno87LdW148r"
-      title="YouTube video player"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerpolicy="strict-origin-when-cross-origin"
-      allowfullscreen
-    ></iframe>
-  </div> -->
 
   <div class="book-section">
     <img
@@ -93,56 +76,46 @@
       class="book-cover"
     />
     <div class="book-details">
-      <div class="book-title">Creativity through Flexibility</div>
+      <h2 class="book-title">Creativity through Flexibility</h2>
       <p class="book-description">
         A collection of 30 data visualizations from the #30DayChartChallenge —
         exploring creativity in data storytelling across chart types, themes,
         and design styles.
       </p>
-      <!-- <div class="book-price">$XX.XX</div> -->
-      <!-- <a
-        href="https://www.blurb.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="book-btn">Purchase on Blurb →</a
-      > -->
       <div class="book-coming-soon">Purchase link coming soon</div>
     </div>
   </div>
 
-  <div style="height: 2.5em"></div>
   <hr />
-  <div style="height: 2.5em"></div>
 
   <div class="page-buttons">
-    <a href="/data-viz" rel="noopener noreferrer">
-      <span class="button-title">→ Data viz</span><br />
+    <a href="/data-viz">
+      <span class="button-title"><span class="arrow">→</span> <span class="kn-mark">Data viz</span></span>
       <span class="button-subtitle">Visual storytelling, code & design</span>
     </a>
-    <a href="/writing" rel="noopener noreferrer">
-      <span class="button-title">→ Writing</span><br />
+    <a href="/writing">
+      <span class="button-title"><span class="arrow">→</span> <span class="kn-mark">Writing</span></span>
       <span class="button-subtitle">Articles, interviews & talks</span>
     </a>
   </div>
 
-  <div style="height: 2.5em"></div>
   <hr />
-  <div style="height: 2.5em"></div>
 
   <div class="contact-info">
     <div>kelsey.nanan@gmail.com</div>
     <a
+      class="kn-link"
       href="https://www.linkedin.com/in/knanan"
       target="_blank"
       rel="noopener noreferrer">LinkedIn</a
     >
     <a
+      class="kn-link"
       href="https://drive.google.com/file/d/1p3Cg1Y4J5n-0DdJ4XWBzdv4OI_2AoXD7/view?usp=sharing"
       target="_blank"
       rel="noopener noreferrer">Resume (typical)</a
     >
-    <div style="height: 20px;"></div>
-    <div>
+    <div class="journey">
       <div>Resume (not so typical):</div>
       <img
         src="/images/Personal journey map.webp"
@@ -173,174 +146,158 @@
 <section class="grid h-screen place-content-center px-[clamp(4rem,12vw,20rem)]"></section> -->
 
 <style>
-  /* .responsive-iframe {
-    width: 100%;
-    max-width: 800px;
-    aspect-ratio: 16 / 9;
-    height: auto;
-    border: 0;
-    display: block;
-    margin: 0 auto;
-  } */
-
-  .book-section {
-    display: flex;
-    flex-direction: row;
-    gap: 2.5em;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .book-cover {
-    max-height: 320px;
-    width: auto;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  }
-
-  .book-details {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75em;
-    max-width: 420px;
-  }
-
-  .book-title {
-    font-size: 1.8rem;
-    font-weight: 600;
-  }
-
-  .book-description {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    font-style: italic;
-    margin: 0;
-  }
-
-  .book-coming-soon {
-    font-size: 1.05rem;
-    color: #999;
-    font-style: italic;
-  }
-
   .intro-page {
-    padding: 1.25em 6em;
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 0 var(--space-6) var(--space-8);
   }
 
+  hr {
+    border: 0;
+    border-top: 1px solid var(--rule);
+    margin: var(--space-7) 0;
+  }
+
+  /* Intro */
   .intro-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    gap: 3em;
-    font-size: 20px;
+    display: grid;
+    grid-template-columns: 148px minmax(0, 46rem);
+    gap: var(--space-6);
     align-items: center;
+    padding-top: var(--space-7);
   }
 
   .intro-container img {
-    max-height: 160px;
-    width: auto;
-    flex-shrink: 0;
-  }
-
-  /* .video-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .video-description {
-    max-width: 500px;
-    font-style: italic;
-  } */
-
-  .intro-text {
-    display: flex;
-    flex-direction: column;
-    gap: 0.55em;
+    width: 148px;
+    height: 148px;
+    border-radius: 50%;
+    object-fit: cover;
   }
 
   .intro-text p {
     margin: 0;
+    font-family: var(--font-display);
+    font-size: 28px;
+    line-height: 38px;
   }
 
-  .contact-info {
+  .intro-text em {
+    font-family: var(--font-text);
+  }
+
+  /* Book */
+  .book-section {
+    display: grid;
+    grid-template-columns: auto minmax(0, var(--measure));
+    gap: var(--space-7);
+    align-items: center;
+    justify-content: start;
+  }
+
+  .book-cover {
+    display: block;
+    height: 340px;
+    width: auto;
+    box-shadow: var(--shadow-object);
+  }
+
+  .book-title {
+    margin: 0 0 var(--space-3);
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 38px;
+    line-height: 44px;
+  }
+
+  .book-description {
+    margin: 0 0 var(--space-5);
+    font-size: 18px;
+    line-height: 30px;
+  }
+
+  .book-coming-soon {
+    font-size: 15px;
+    line-height: 23px;
+    font-style: italic;
+    color: var(--ember);
+  }
+
+  /* Page links */
+  .page-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+  }
+
+  .page-buttons a {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    justify-content: center;
-    align-items: center;
+    gap: var(--space-1);
+    color: var(--ink);
+    text-decoration: none;
   }
 
-  a {
-    text-decoration: underline;
-    color: blue;
+  .button-title {
+    font-family: var(--font-display);
+    font-size: 38px;
+    line-height: 44px;
   }
 
-  .text {
-    color: white;
+  .arrow {
+    color: var(--link);
   }
 
-  .rainbow-word {
-    background-image: linear-gradient(
-      90deg,
-      red,
-      orange,
-      yellow,
-      green,
-      blue,
-      violet
-    );
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: white; /* Start as white */
-    display: inline-block;
-    background-size: 200% 100%;
-    background-position: 0% 50%;
-    transition: -webkit-text-fill-color 0.3s ease-in-out; /* Smooth transition */
-  }
-
-  a {
-    color: #ff8a0c;
-    text-decoration: underline;
-    padding: 0 5px;
-    transition: all 0.3s ease;
-  }
-
-  a:hover {
-    box-shadow: 0 4px 4.5px rgba(0, 0, 0, 0.3);
-  }
-
-  .page-buttons {
-    font-size: 28px;
-    display: flex;
-    gap: 20px;
-    justify-content: space-around;
+  .page-buttons a:hover .kn-mark {
+    background-size: 100% 0.6em;
   }
 
   .button-subtitle {
-    font-size: 20px;
+    font-size: 18px;
+    line-height: 28px;
+    font-style: italic;
+    color: var(--ink-muted);
+  }
+
+  /* Contact */
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    align-items: center;
+    font-size: 18px;
+    line-height: 30px;
+  }
+
+  .journey {
+    margin-top: var(--space-5);
+    text-align: left;
   }
 
   .personal-journey-map-img {
     max-width: 800px;
     width: 100%;
+    margin-top: var(--space-2);
   }
 
   @media (max-width: 1000px) {
-    .intro-container {
-      flex-direction: column-reverse;
-      gap: 2em;
-    }
     .intro-page {
-      padding: 20px;
+      padding: 0 var(--space-4) var(--space-7);
     }
-    .book-section {
-      flex-direction: column;
-      align-items: center;
+    .intro-container,
+    .book-section,
+    .page-buttons {
+      grid-template-columns: 1fr;
+    }
+    .intro-text p {
+      font-size: 24px;
+      line-height: 34px;
     }
     .book-cover {
-      max-height: 260px;
+      height: 260px;
+    }
+    .button-title {
+      font-size: 30px;
+      line-height: 36px;
     }
   }
 </style>

@@ -37,91 +37,74 @@
 <div class="img-preview-content">
   <div class="main-content-flex">
     <div class="content-description-flex-child">
-      <div class="flex flex-wrap gap-2.5">
-        <!-- {#each data.tags as tag}
-          <div class="tag-card {tagClassMap[tag]}">{tag}</div>
-        {/each} -->
-      </div>
-      <div class="content-title">
-        {data.title} ({data.year})
-      </div>
+      <h1 class="content-title">
+        {data.title} <span class="content-year kn-figure">({data.year})</span>
+      </h1>
       <div class="project-description">{data.description}</div>
-      <div class="project-meta">
-        {#if data.client}<div>
-            <strong>CLIENT:</strong>
-            {data.client}
-          </div>{/if}
-        {#if data.featured[0] !== ""}<div>
-            <strong>FEATURED: </strong>
+      <dl class="project-meta">
+        {#if data.client}
+          <dt>CLIENT:</dt>
+          <dd>{data.client}</dd>
+        {/if}
+        {#if data.featured[0] !== ""}
+          <dt>FEATURED:</dt>
+          <dd>
             {#each data.featured as link_text, i (link_text)}
               <a
-                class="inline-a"
+                class="kn-link"
                 href={data.featured_links[i]}
                 target="_blank"
-                rel="noopener noreferrer"
-              >
-                {link_text}
-              </a>{i < data.featured.length - 1 ? ", " : ""}
+                rel="noopener noreferrer">{link_text}</a
+              >{i < data.featured.length - 1 ? ", " : ""}
             {/each}
-          </div>{/if}
-        {#if data.honors[0] !== ""}<div>
-            <strong>HONORS:</strong>
+          </dd>
+        {/if}
+        {#if data.honors[0] !== ""}
+          <dt>HONORS:</dt>
+          <dd>
             {#each data.honors as link_text, i (link_text)}
               <a
-                class="inline-a"
+                class="kn-link"
                 href={data.honors_links[i]}
                 target="_blank"
-                rel="noopener noreferrer"
-              >
-                {link_text}
-              </a>{i < data.featured.length - 1 ? ", " : ""}
+                rel="noopener noreferrer">{link_text}</a
+              >{i < data.honors.length - 1 ? ", " : ""}
             {/each}
-          </div>{/if}
-      </div>
+          </dd>
+        {/if}
+      </dl>
       <div class="mini-image-gallery-flex">
         {#each data.images as image, i (imageFolder + '/' + image)}
-          {#if isGif(image) && !gifVideoFailed[image]}
-            <video
-              autoplay
-              loop
-              muted
-              playsinline
-              onmouseenter={() => updateHoveredImageIndex(i)}
-              class:active={hoveredImageIndex === i}
-            >
-              <source
-                src={gifVideoSrc(image, "webm")}
-                type="video/webm"
-                onerror={() => { gifVideoFailed[image] = true; }}
-              />
-              <source src={gifVideoSrc(image, "mp4")} type="video/mp4" />
-            </video>
-          {:else}
-            <img
-              src={imgSrc(image)}
-              alt="mini carousel"
-              loading="lazy"
-              onmouseenter={() => updateHoveredImageIndex(i)}
-              class:active={hoveredImageIndex === i}
-            />
-          {/if}
+          <button
+            class="gallery-item"
+            aria-current={hoveredImageIndex === i ? "true" : undefined}
+            onmouseenter={() => updateHoveredImageIndex(i)}
+            onfocus={() => updateHoveredImageIndex(i)}
+            onclick={() => updateHoveredImageIndex(i)}
+          >
+            {#if isGif(image) && !gifVideoFailed[image]}
+              <video autoplay loop muted playsinline>
+                <source
+                  src={gifVideoSrc(image, "webm")}
+                  type="video/webm"
+                  onerror={() => { gifVideoFailed[image] = true; }}
+                />
+                <source src={gifVideoSrc(image, "mp4")} type="video/mp4" />
+              </video>
+            {:else}
+              <img src={imgSrc(image)} alt="mini carousel" loading="lazy" />
+            {/if}
+          </button>
         {/each}
       </div>
-      <button>
-        <a
-          class="view-project"
-          href={data.content_link}
-          target="_blank"
-          rel="noopener noreferrer"
-          >View project
-        </a></button
+      <a
+        class="view-project kn-link"
+        href={data.content_link}
+        target="_blank"
+        rel="noopener noreferrer">View project</a
       >
-
-      <div class="image-description">
-        {data.image_descriptions[hoveredImageIndex]}
-      </div>
     </div>
-    <div class="image-container-flex-child">
+    <figure class="image-container-flex-child">
       {#key data.images[hoveredImageIndex]}
       {#if isGif(data.images[hoveredImageIndex]) && !gifVideoFailed[data.images[hoveredImageIndex]]}
         <video class="main-preview-img" autoplay loop muted playsinline>
@@ -141,154 +124,138 @@
         />
       {/if}
       {/key}
-    </div>
+      <figcaption class="image-description">
+        {data.image_descriptions[hoveredImageIndex]}
+      </figcaption>
+    </figure>
   </div>
 </div>
 
 <style>
-  .content-title {
-    font-size: 2rem;
-    font-weight: 600;
-    display: flex;
-    justify-content: center;
-    padding-top: 13px;
-  }
-
   .main-content-flex {
-    display: flex;
-    height: calc(100vh - 140px - 62px - 61px);
-    gap: 25px;
-    margin: 0 3em;
-    /* align-items: flex-start; */
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: var(--space-7) var(--space-6) var(--space-8);
+    display: grid;
+    grid-template-columns: minmax(0, var(--measure)) minmax(0, 1fr);
+    gap: var(--space-6);
+    align-items: start;
   }
 
-  .image-container-flex-child {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 0;
-    transition: all 0.1s ease-in-out;
+  .content-title {
+    margin: 0 0 var(--space-5);
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(38px, 4vw, 52px);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--ink);
   }
 
-  .main-preview-img {
-    max-width: 100%;
-    max-height: 100%;
-    display: block;
-    border: 2px solid black;
-    border-radius: 3px;
+  .content-year {
+    font-size: 0.42em;
+    vertical-align: 0.3em;
+    letter-spacing: 0;
+    color: var(--ink-muted);
+    white-space: nowrap;
   }
 
-  .content-description-flex-child {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 10px;
+  .project-description {
+    margin: 0 0 var(--space-5);
+    font-size: 21px;
+    line-height: 33px;
+  }
+
+  .project-meta {
+    margin: 0 0 var(--space-5);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: var(--space-4);
+    row-gap: var(--space-1);
+  }
+
+  .project-meta dt {
+    font-family: var(--font-display);
+    font-size: 12px;
+    line-height: 26px;
+    letter-spacing: 0.1em;
+    color: var(--ink-muted);
+  }
+
+  .project-meta dd {
+    margin: 0;
+    font-size: 16px;
+    line-height: 26px;
   }
 
   .mini-image-gallery-flex {
     display: flex;
-    justify-content: center;
-    column-gap: 10px;
-    row-gap: 10px;
     flex-wrap: wrap;
+    gap: var(--space-2);
+    margin: 0 0 var(--space-5);
   }
 
-  .mini-image-gallery-flex img,
-  .mini-image-gallery-flex video {
-    height: 10vh;
-    min-height: 70px;
-    border-radius: 3px;
+  .gallery-item {
+    padding: 0 0 5px;
+    border-bottom: 2px solid transparent;
     cursor: pointer;
-    transition: opacity 0.2s ease;
-    border: 1.5px solid rgba(0, 0, 0, 0.25);
+  }
+
+  .gallery-item[aria-current="true"] {
+    border-bottom-color: var(--ink);
+  }
+
+  .gallery-item img,
+  .gallery-item video {
+    display: block;
+    height: 64px;
+    width: 88px;
     object-fit: cover;
-  }
-
-  .mini-image-gallery-flex img.active,
-  .mini-image-gallery-flex video.active {
-    opacity: 0.5;
-    border: 2.5px solid black;
-  }
-
-  .project-meta {
-    font-size: 0.9rem;
-    color: #666;
-    margin-top: 0.5rem;
-  }
-
-  .project-description {
-    margin-top: 1rem;
-    font-size: 1.1rem;
-    line-height: 1.6;
-  }
-
-  .image-description {
-    font-style: italic;
+    outline: 1px solid var(--rule);
+    outline-offset: -1px;
   }
 
   .view-project {
-    font-size: 20px;
-    font-weight: 500;
-    color: #ff8a0c;
+    font-family: var(--font-display);
+    font-size: 22px;
+    line-height: 30px;
   }
 
-  /* .view-project:hover {
-    color: #003366;
-  } */
-
-  a {
-    color: #ff8a0c;
-    text-decoration: underline;
-    padding: 0 5px;
-    transition: all 0.3s ease;
+  .image-container-flex-child {
+    margin: 0;
+    position: sticky;
+    top: calc(var(--header-h, 70px) + 150px);
   }
 
-  .inline-a {
-    padding: 0;
+  .main-preview-img {
+    display: block;
+    width: 100%;
+    max-height: 68vh;
+    object-fit: contain;
+    background: var(--paper-sunk);
+    border: 1px solid var(--rule-strong);
   }
 
-  a:hover {
-    box-shadow: 0 4px 4.5px rgba(0, 0, 0, 0.3);
-  }
-
-  .tag-card {
-    padding: 0.2% 1%;
-    border-radius: 3px;
-  }
-
-  .tech {
-    background-color: aquamarine;
-    color: black;
-  }
-
-  .design {
-    background-color: blueviolet;
+  .image-description {
+    margin-top: var(--space-2);
+    font-size: 15px;
+    line-height: 23px;
+    font-style: italic;
+    color: var(--ink-muted);
   }
 
   @media (max-width: 1000px) {
     .main-content-flex {
-      flex-direction: column;
-      height: 120vh;
-      /* height: auto; */
-      gap: 5px;
-      padding: 0 20px;
-      margin: 0 5px;
-    }
-    .content-title {
-      padding-left: 13px;
-      padding-right: 13px;
-    }
-    .content-description-flex-child {
-      flex: unset;
+      grid-template-columns: 1fr;
+      padding: var(--space-6) var(--space-4) var(--space-7);
     }
     .image-container-flex-child {
-      width: 100%;
-      align-items: flex-start;
+      position: static;
+      order: -1;
     }
     .main-preview-img {
-      max-width: 100%;
       max-height: 50vh;
     }
   }
