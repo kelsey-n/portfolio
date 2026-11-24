@@ -103,7 +103,7 @@
       "_escaping.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout.iu1Ls7uf.css"
+      "_app/immutable/assets/_layout.BNR8sryy.css"
     ]
   },
   "src/routes/+page.svelte": {
@@ -116,7 +116,7 @@
       "_index.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.ByJbIiMr.css"
+      "_app/immutable/assets/_page.Cxh9UKXn.css"
     ]
   },
   "src/routes/about/+page.svelte": {

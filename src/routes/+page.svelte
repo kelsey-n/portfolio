@@ -88,7 +88,7 @@
 
   <div class="book-section">
     <img
-      src="/images/Book cover - with stars for site.webp"
+      src="/images/Book cover - live hardcover.jpg"
       alt="Book cover for Creativity through Flexibility"
       class="book-cover"
     />
@@ -99,15 +99,30 @@
         exploring creativity in data storytelling across chart types, themes,
         and design styles.
       </p>
-      <!-- <div class="book-price">$XX.XX</div> -->
-      <!-- <a
-        href="https://www.blurb.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="book-btn">Purchase on Blurb →</a
-      > -->
-      <div class="book-coming-soon">Purchase link coming soon</div>
+      <div class="book-links">
+        <a
+          href="https://www.blurb.com/b/12912672-creativity-through-flexibility"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="book-btn">Hardcover →</a
+        >
+        <a
+          href="https://www.blurb.com/b/12912676-creativity-through-flexibility"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="book-btn">Softcover →</a
+        >
+      </div>
+      <p class="book-nyc">
+        Based in NYC? <a href="mailto:kelsey.nanan@gmail.com">Reach out</a> to grab
+        a copy directly from me — skip the shipping and pay less.
+      </p>
     </div>
+    <img
+      src="/images/Kelsey holding books.JPG"
+      alt="Kelsey holding copies of Creativity through Flexibility"
+      class="book-holding"
+    />
   </div>
 
   <div style="height: 2.5em"></div>
@@ -192,9 +207,18 @@
   }
 
   .book-cover {
-    max-height: 320px;
+    max-height: 280px;
     width: auto;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transform: rotate(-3deg);
+  }
+
+  .book-holding {
+    max-height: 280px;
+    width: auto;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transform: rotate(3deg);
   }
 
   .book-details {
@@ -216,10 +240,10 @@
     margin: 0;
   }
 
-  .book-coming-soon {
-    font-size: 1.05rem;
-    color: #999;
-    font-style: italic;
+  .book-nyc {
+    font-size: 0.95rem;
+    margin: 0;
+    color: #666;
   }
 
   .intro-page {
@@ -336,11 +360,21 @@
       padding: 20px;
     }
     .book-section {
-      flex-direction: column;
-      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .book-details {
+      order: -1;
+      width: 100%;
+      max-width: 100%;
     }
     .book-cover {
-      max-height: 260px;
+      max-height: 180px;
+      transform: rotate(-2deg);
+    }
+    .book-holding {
+      max-height: 180px;
+      transform: rotate(2deg);
     }
   }
 </style>
