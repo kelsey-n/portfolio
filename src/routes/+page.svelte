@@ -88,7 +88,7 @@
 
   <div class="book-section">
     <img
-      src="/images/Book cover - live hardcover.jpg"
+      src="/images/Book cover - live hardcover.webp"
       alt="Book cover for Creativity through Flexibility"
       class="book-cover"
     />
@@ -119,7 +119,7 @@
       </p>
     </div>
     <img
-      src="/images/Kelsey holding books.JPG"
+      src="/images/Kelsey holding books.webp"
       alt="Kelsey holding copies of Creativity through Flexibility"
       class="book-holding"
     />
